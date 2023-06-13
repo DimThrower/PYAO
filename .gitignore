@@ -1,0 +1,9 @@
+# Environment Variable #
+########################
+*.env
+
+# Ignore venv
+venv
+
+# Ignore python folder
+Python

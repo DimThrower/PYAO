@@ -1,0 +1,22 @@
+1) Create C:/Script folder
+2) Download Git Hub files into C:/Script Folder
+3) Download C++ build tools (https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+4) Download MySql (https://downloads.mysql.com/archives/installer/) 
+	* download the larger file
+5) Download Python into C:/Script folder
+6) Create venv using the following commmand
+	- cd C:\Script\PYAO-main
+	- python -m venv venv
+7) Run add_custom_path.bat script 
+8) Download Chrome
+9) Download the firefox browser (https://www.mozilla.org/en-US/firefox/new/) 
+	* Insure firefox.exe is in the right path (C:\Program Files\Mozilla Firefox)
+9) Install the pakages based on the requirements.txt
+	- C:\Script\PYAO-main\venv\Scripts\activate.bat
+	- cd C:\Script\PYAO-main\ (navigate to requirements.txt)
+	- pip install -r requirements.txt
+10) ensure the db passwords and user names match in the PYAO.env file
+11) Set up run_scripts.bat (C:\Script\PYAO-main)
+
+
+

@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-import time, os, pyautogui, shutil, schedule
+import time, os, pyautogui, shutil, schedule, ctypes
 from selenium.webdriver.firefox.options import Options
 from AutoOffer import settings
 from HTML import TextFields, CheckBoxes, Buttons
@@ -231,6 +231,9 @@ def create_offers():
                 # Click the download button
                 browser.find_element(By.CSS_SELECTOR, '#download').click()
 
+                # Wait some time for 'Save As' window to appear
+                time.sleep(5)
+
                 # Create the folder where the documents for this property will be held
                 offer_folder = f'{settings.filled_TREC_file_path}\\{mls_id}'
                 os.mkdir(offer_folder) # Make the folder the MLS ID
@@ -238,21 +241,28 @@ def create_offers():
                 # Set path for pdf file
                 file_path = f'{offer_folder}\\Cash Offer for {prop_dict[pp.steet_address]}.pdf'
 
+
                 start_time = time.time()
                 while True:
+                    # Find the save as window
+                    windows = gw.getWindowsWithTitle('Save As')
 
-                    # Bring save window to front so python can send path
-                    bring_window_to_front('Save As')
+                    if len(windows) > 0:
+                        # Get save as window from windows
+                        save_as_window = windows[0]
 
-                    # Make the pdf file name
-                    pyautogui.typewrite(file_path)
-                    time.sleep(1)
+                        # Activate the save as window
+                        ctypes.windll.user32.SetForegroundWindow(save_as_window._hWnd)
 
-                    # Bring save window to front so python can click save
-                    bring_window_to_front('Save As')
+                        # Make the pdf file name
+                        pyautogui.typewrite(file_path)
+                        time.sleep(1)
 
-                    # Press enter on the Save as window to save pdf
-                    pyautogui.press('enter')
+                        # Activate the save as window
+                        ctypes.windll.user32.SetForegroundWindow(save_as_window._hWnd)
+
+                        # Press enter on the Save as window to save pdf
+                        pyautogui.press('enter')
 
                     if time.time() - start_time > 20:
                         # If the time limit is reached

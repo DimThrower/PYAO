@@ -140,7 +140,7 @@ def HAR():
             selector_dictionaries = [html.innerHTML['listing_page'], html.innerHTML['tax_page']]
 
             # Loop through all the pages
-            while current_num+1 <= 3:
+            while current_num+1 <= final_num:
                 print(f'Curent number: {current_num}')
                 temp_prop_dict = {}
 
@@ -174,7 +174,8 @@ def HAR():
                     if index == 0:
                         # Click on the listing tab
                         # click(browser, wait=10, e_type='css', element=html.selectors['har']['listing_link'], errmsg=f'({inspect.currentframe().f_lineno}) - Cannot click listing link btn')
-                        (check_element_exists_BLOCK(browser=browser, css_selector=html.selectors['har']['listing_link'], calling_line=line())).click()
+                        #(check_element_exists_BLOCK(browser=browser, css_selector=html.selectors['har']['listing_link'], calling_line=line())).click()
+                        click(browser=browser, wait=10, e_type="css", element=html.selectors['har']['listing_link'], errmsg=f"({line()}) Cannot click listing link")
                         print(f'Clicked Linked Page')
 
                         # Check to ensure listing page has loaded
@@ -415,7 +416,7 @@ def HAR():
                 # Get the current and final number
                 current_num = int(innerHTML_Drill(soup.select_one(html.selectors['har']['current_num'])))
                 final_num =  int(innerHTML_Drill(soup.select_one(html.selectors['har']['final_num'])))
-                # print(f"current_num: {current_num} - final_num: {final_num}")
+                print(f"current_num: {current_num} - final_num: {final_num}")
 
                 # Check if listing was skipped
                 if not skip_listing:
@@ -430,8 +431,7 @@ def HAR():
 
                         # Attaching the offer dictionary
                         temp_prop_dict.update(html.offer_details)
-                        # print(f'google dict: {html.googlesheet}')
-                        # print(f'After update: {temp_prop_dict}')                
+                        print(f'After update: {temp_prop_dict}')                
 
                         # Calculate repair, offer price, and earnest money
                         offer_calc(temp_prop_dict)

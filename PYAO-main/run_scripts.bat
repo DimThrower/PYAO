@@ -19,13 +19,13 @@ set "switch_ghl=AutoOffer\html_manipulation\GHL_Switcher.py"
 
 
 start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %get_prop%"
-rem timeout /t 7 >nul
-rem start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %check_ghl%"
-rem timeout /t 7 >nul
-rem  cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %make_offer%"
-rem timeout /t 7 >nul
-rem start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %make_email%"
-rem timeout /t 7 >nul
-rem start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %send_email%"
-rem timeout /t 7 >nul
-rem start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %switch_ghl%"
+timeout /t 7 >nul
+start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %check_ghl%"
+timeout /t 7 >nul
+start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %make_offer%"
+timeout /t 7 >nul
+start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %make_email%"
+timeout /t 7 >nul
+start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %send_email%"
+timeout /t 7 >nul
+start cmd /k "C:\Script\PYAO-main\venv\Scripts\activate.bat && python %switch_ghl%"

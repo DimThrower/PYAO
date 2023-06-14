@@ -145,7 +145,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                         print (f'({task_id})-({line ()}) Opportunity search bar not clear. Attempt clear again')
 
                 # Wait for the cards to refresh
-                await asyncio.sleep (10)
+                await asyncio.sleep (20)
 
                 # Wait for cards to show
                 await wait_until_appeared (browser=browser,
@@ -228,7 +228,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
 
                     # Input contact Name
                     input_element.send_keys (
-                        f'{curr_prop_dict[pp.agent_first_name]} {curr_prop_dict[pp.agent_last_name]}')
+                        f'{curr_prop_dict[pp.agent_first_name]} {curr_prop_dict[pp.agent_last_name]} ~PY~')
 
                     # Need to press enter so the Contact name doesn't disappear
                     input_element.send_keys (Keys.ENTER)

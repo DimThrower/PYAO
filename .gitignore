@@ -1,6 +1,7 @@
 # Environment Variable #
 ########################
 *.env
+*.pdf
 
 # Ignore venv
 venv

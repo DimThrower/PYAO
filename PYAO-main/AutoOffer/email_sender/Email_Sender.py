@@ -115,7 +115,7 @@ def main():
             for prop in props:
                 # print(prop)
                 bulk_email(
-                    to_email = 'charles@rightwayhomesolutions.com',#prop[pp.agent_email],
+                    to_email = prop[pp.agent_email],
                     subject = f"Cash Offer for {prop[pp.steet_address]}",
                     body = prop[pp.email_body],
                     offer_path = prop[pp.pdf_offer_path],

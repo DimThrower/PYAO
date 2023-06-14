@@ -9,12 +9,13 @@ pp = PropertyProfile()
 # Function to calculate repair, offer, and earnest money
 def offer_calc(prop_dict):
 
-    # Turn SQFT into an int
-    sqft = int((prop_dict[pp.sqft]).replace("$","").replace(',',""))
+    # Check if SQFT exists
+    if prop_dict[pp.sqft]:
+        # Turn SQFT into an int
+        sqft = int((prop_dict[pp.sqft]).replace("$","").replace(',',""))
 
-
-    # Set repair to 30 x SQFT
-    prop_dict[pp.repair] = 30 * sqft
+        # Set repair to 30 x SQFT
+        prop_dict[pp.repair] = 30 * sqft
 
     # Check if ARV exits
     if prop_dict[pp.arv]:

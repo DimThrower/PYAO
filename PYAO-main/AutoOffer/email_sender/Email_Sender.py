@@ -1,6 +1,6 @@
 import smtplib
 import socket
-import os, schedule, time
+import os, schedule, time, random
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email.mime.text import MIMEText
@@ -97,7 +97,7 @@ def main():
         props_per_sesh = 10
 
         # Define session time interaval in minutes
-        sesh_time = 30*60
+        # sesh_time = 30*60
 
 
         # Find all the properties that need offer sent on them by checking if the Offer_Sent field in NULL
@@ -123,9 +123,10 @@ def main():
                     signature_html = sig.hou_signature,
                     )
                 
-                # Spread the emails sent eveny over each scheduled time
-                wait_time = sesh_time/props_per_sesh
-                print(f'Email sent, waiting {wait_time/30} minutes until next send')
+                # Make random wait time in minutes
+                wait_time = random.randint(4, 7) * 60 
+
+                print(f'Email sent, waiting {wait_time} minutes until next send')
                 time.sleep(wait_time)
         else:
             print(f'No properties to send offer on. Wait for the next schedule')

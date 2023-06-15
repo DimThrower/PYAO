@@ -156,6 +156,10 @@ def HAR():
                 while start_listing_num < 1:
                     # Get the page into soup
                     soup = BeautifulSoup(browser.page_source, 'html.parser')
+                    
+                    # Wait a bit for page to load before checking the current number
+                    time.sleep(2)
+
                     if start_listing_num-1 > int(innerHTML_Drill(soup.select_one(html.selectors['har']['current_num']))):
                         # Click the next button
                         click(browser, wait=10, e_type='css', element=html.selectors['har']['next_btn'], errmsg=f'({inspect.currentframe().f_lineno}) - Cannot click Next btn')
@@ -179,7 +183,7 @@ def HAR():
                         print(f'Clicked Linked Page')
 
                         # Check to ensure listing page has loaded
-                        WebDriverWait(browser,30).until(EC.visibility_of_element_located((By.CSS_SELECTOR, html.selectors['har']['listing_dom_check'])))
+                        WebDriverWait(browser,60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, html.selectors['har']['listing_dom_check'])))
 
                         # Refreshing soup instance
                         soup = BeautifulSoup(browser.page_source, 'html.parser')

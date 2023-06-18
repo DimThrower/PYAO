@@ -472,19 +472,22 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                 except (NoSuchElementException, StaleElementReferenceException):
                                     continue
 
-                                # print(f"({task_id}) Was the child fo the form-group div found?: {title_child_element}")
+                                print(f"({task_id}) Was the child element form-group div found?: {title_child_element}")
                                 # Get the innerHTML of the input 
                                 if title_child_element:
                                     innerHTML_input = title_child_element.get_attribute ("innerHTML")
-                                    # print(f"({task_id}) Input value: {innerHTML_input}")
+                                    print(f"({task_id}) Input value: {innerHTML_input}")
 
+                                    # Check is the current form-group class element has a title that matches any value in the all_inputs list
                                     if innerHTML_input in all_inputs:
                                         # This first try is for input fields
                                         # Get the input element of the for-group class
-                                        # Find the iput tag located in the form-group element
-                                        try:
+                                        # Find the iput tag located in the form-group element                                   
+                                        try:  
+                                            # This will get the field where the actual data is inputted
                                             input_element = form_group_element.find_element (By.TAG_NAME, "input")
-
+                                            print(f'Input element: {input_element}')
+                                            # This will handle the Escrow Agent and Title company
                                             if any (keyword in innerHTML_input for keyword in
                                                     ['Escrow Agent', 'Title Company Address']):
 
@@ -520,7 +523,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                             f"({task_id}) Trying to click the innerHTML of the drpdwn")
                                                         continue
 
-                                                        # Use innerHTML to get the correct key in curr_prop_dict
+                                                    # Use innerHTML to get the correct key in curr_prop_dict
                                                     curr_prop_dict_key = all_inputs[innerHTML_input]
                                                     # print(f"({task_id}) curr_prop_dic_key: {curr_prop_dict_key}")
 
@@ -779,8 +782,8 @@ async def task(browser, task_id, prop_dict_part, cursor):
                     save_btn_element.click ()
 
                     # Wait for the save button to disappear
-                    while not wait_until_disappeared_element (element=save_btn_element, timeout=30,
-                                                              calling_line=line ()):
+                    while not (await wait_until_disappeared_element (element=save_btn_element, timeout=30,
+                                                              calling_line=line ())):
                         # Click the save button
                         (await check_only_element_exists (element=save_btn_element, calling_line=line ())).click ()
 

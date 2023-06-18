@@ -126,7 +126,7 @@ def main():
                 # Make random wait time in minutes
                 wait_time = random.randint(4, 7) * 60 
 
-                print(f'Email sent, waiting {wait_time} minutes until next send')
+                print(f'Email sent, waiting {wait_time/60} minutes until next send')
                 time.sleep(wait_time)
         else:
             print(f'No properties to send offer on. Wait for the next schedule')

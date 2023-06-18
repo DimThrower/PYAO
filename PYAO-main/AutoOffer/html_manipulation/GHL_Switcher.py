@@ -218,7 +218,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                                  data_dict={pp.ghl_offer_made: datetime.now().strftime('%Y-%m-%d %H:%M:%S')},
                                                                  overwrite=True)
 
-                await asyncio.sleep(5)
+                await asyncio.sleep(10)
         #
         except NoSuchWindowException:
             pass

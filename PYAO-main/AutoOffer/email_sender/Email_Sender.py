@@ -10,6 +10,7 @@ from AutoOffer.html_manipulation import HTML
 from AutoOffer.db import db_funct
 from Signatures import Signatures
 import datetime
+from AutoOffer.misc import line
 
 # Create Property profile instance
 pp = HTML.PropertyProfile()
@@ -114,6 +115,19 @@ def main():
             # Iterate over all the properties
             for prop in props:
                 # print(prop)
+
+                # Check if in acceptable time range
+                current_time = datetime.datetime.now().time()
+                start_time = datetime.time(hour=7, minute=0)  # 7:00 AM
+                end_time = datetime.time(hour=21, minute=0)   # 9:00 PM
+
+                if start_time <= current_time <= end_time:
+                    pass
+                else:
+                    print(f'({line()}) Out side of run time. Waiting for scheduled r')
+                    break
+
+
                 bulk_email(
                     to_email = prop[pp.agent_email],
                     subject = f"Cash Offer for {prop[pp.steet_address]}",
@@ -126,10 +140,10 @@ def main():
                 # Make random wait time in minutes
                 wait_time = random.randint(4, 7) * 60 
 
-                print(f'Email sent, waiting {wait_time/60} minutes until next send')
+                print(f'({line()}) Email sent, waiting {wait_time/60} minutes until next send')
                 time.sleep(wait_time)
         else:
-            print(f'No properties to send offer on. Wait for the next schedule')
+            print(f'({line()}) No properties to send offer on. Wait for the next schedule')
 
 def job():
     current_time = datetime.datetime.now().time()
@@ -139,7 +153,7 @@ def job():
     if start_time <= current_time <= end_time:
         main()
     else:
-        print(f'Out side of run time')
+        print(f'({line()}) Out side of run time')
 
 if __name__ == '__main__':
 

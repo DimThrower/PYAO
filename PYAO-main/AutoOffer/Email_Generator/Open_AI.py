@@ -1,3 +1,4 @@
+import random
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -27,10 +28,33 @@ def create_query(prop):
     investor_name = 'Charles Watkins'
     investor_number = '832-263-6157'
 
+    # List out the possible intros
+    intros = [
+    f"Hey {agent_firstname},",
+    f"Hey there, {agent_firstname},",
+    f"Warm greetings, {agent_firstname},",
+    f"Trust you're doing well, {agent_firstname},",
+    f"Congratulations on the listing {agent_firstname},",
+    f"Delighted to connect with you again, {agent_firstname},",
+    f"Hello {agent_firstname},",
+    f"Hi there, {agent_firstname},",
+    f"Thrilled to be reaching out to you, {agent_firstname},",
+    f"Hope you're having a great day, {agent_firstname},",
+    f"Sending my best regards, {agent_firstname},",
+    f"Hello again, {agent_firstname},",
+    f"Hi, {agent_firstname},",
+    f"Hope all is well, {agent_firstname},",
+    f"Hey {agent_firstname}, hope you're doing great!",
+    ]
+
+    # Pick a random intro
+    rand_intro = random.choice(intros)
+            
+
     query = f"""
     You are a local Houston investor named {investor_name}. 
     Your goal is to write an personable email to real estate agent, {agent_firstname}, to present an offer of ${offer} on the thier MLS listing located at {address}.
-    Start the email with "Hey {agent_firstname}, This is..." then continue with intent of email
+    Start the email with "{rand_intro} This is..." then continue with intent of email
     Do not start off mulitple sentences with the same word.
 
     PUBLIC REMARKS FROM {agent_firstname}:

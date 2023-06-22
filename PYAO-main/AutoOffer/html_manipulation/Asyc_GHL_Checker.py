@@ -446,10 +446,13 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                         main_scroll_element)
                                 # print(f"({task_id}) Scolling to bottom of detials page")
 
+                            # Wait some time for all the form elements to load
+                            time.sleep(2)
+
                             # Find elements for the visibile form-grop class element
                             form_group_elements = await check_elements_exists (browser=browser, css_selector=
                             html.innerHTML['GHL']['Details']['Class'], calling_line=line ())
-                            print (f"({task_id})-({line ()}) Found all the form-group class elements")
+                            print (f"({task_id})-({line ()}) Found {len(form_group_elements)} form-group class elements")
 
                             # Initialize a dictionary to combine general and additional dictionaries
                             all_inputs = {}

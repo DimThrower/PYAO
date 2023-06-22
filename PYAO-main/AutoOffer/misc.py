@@ -75,9 +75,9 @@ async def check_elements_exists(browser, css_selector, timeout=None, count=10, c
 
     while True:
         try:
-            # Find the element using the CSS selector
-            element = browser.find_elements(By.CSS_SELECTOR, css_selector)
-            return element  # Return the element when found
+            # Find the elements using the CSS selector
+            elements = browser.find_elements(By.CSS_SELECTOR, css_selector)
+            return elements  # Return the element when found
         except (NoSuchElementException, StaleElementReferenceException, ElementClickInterceptedException):
             pass  # Continue checking if the element is not found
 
@@ -235,7 +235,7 @@ async def wait_until_appeared(browser, css_element, timeout=None, count=10, call
         if counter % count == 0:
             print(f"Checking element... (called from line {calling_line})")  # Print the calling line every 60 iterations
 
-        if timeout and time.time() - start_time < timeout:
+        if timeout and time.time() - start_time > timeout:
             print(f"Cannot find: {css_element}")
             return False
 
@@ -257,7 +257,7 @@ async def wait_until_disappeared_element(element, timeout=None, count=10, callin
         if counter % count == 0:
             print(f"Checking element... (called from line {calling_line})")  # Print the calling line every 60 iterations
         
-        if timeout and time.time() - start_time < timeout:
+        if timeout and time.time() - start_time > timeout:
             print(f"Element still there: {element}")
             return False
 
@@ -280,7 +280,7 @@ async def wait_until_appeared_element(element, timeout=None, count=10, calling_l
         if counter % count == 0:
             print(f"Checking element... (called from line {calling_line})")  # Print the calling line every 60 iterations
 
-        if timeout and time.time() - start_time < timeout:
+        if timeout and time.time() - start_time > timeout:
             print(f"(Cannot find: {element}")
             return False
 

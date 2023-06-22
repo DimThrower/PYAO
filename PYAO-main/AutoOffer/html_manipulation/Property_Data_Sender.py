@@ -204,7 +204,7 @@ def HAR():
                                 # Set end_code to True so code know to stop looking
                                 # Also set skip listing to true, so code does not try and save it
                                 skip_listing = True
-                                #end_code = True
+                                end_code = True
                                 break
                     
                     # When index is 1 it's on the Listing page, if 0 it's on the tax page

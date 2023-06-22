@@ -1,3 +1,4 @@
 {
-  "SuppressConfigureTestFrameworkPrompt": "true"
+  "SuppressConfigureTestFrameworkPrompt": "true",
+  "Interpreter": "C:\\Script\\PYAO-main\\venv\\Scripts\\python.exe"
 }

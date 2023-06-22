@@ -237,9 +237,12 @@ def create_offers():
                 # Create the folder where the documents for this property will be held
                 offer_folder = f'{settings.filled_TREC_file_path}\\{mls_id}'
                 os.mkdir(offer_folder) # Make the folder the MLS ID
+
+                # Generate appropriates file path, take out "/" and replace with "-"
+                modified_string_filename = prop_dict[pp.steet_address].replace("/", "-")
                 
                 # Set path for pdf file
-                file_path = f'{offer_folder}\\Cash Offer for {prop_dict[pp.steet_address]}.pdf'
+                file_path = f'{offer_folder}\\Cash Offer for {modified_string_filename}.pdf'
 
 
                 start_time = time.time()

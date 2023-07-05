@@ -634,7 +634,7 @@ Funtion to input code
     # Checking to ensure authorization code went through
 def input_code(browser, code_num):
     for index, num in enumerate(str(code_num), start=1):
-        element = f"#app > div.undefined.flex.v2-open.sidebar-v2-agency > section > div.hl_login--body > div > div > div > div > div.form-group.mt-4 > div > div > div:nth-child({index}) > input"
+        element = f"#app > div:nth-child(1) > div.undefined.flex.v2-open.sidebar-v2-agency > section > div.hl_login--body > div > div > div > div > div.form-group.mt-4 > div > div > div:nth-child({index}) > input"
         browser.find_element(By.CSS_SELECTOR, element).send_keys(num)
         # print(num)
 

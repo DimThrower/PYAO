@@ -1,4 +1,5 @@
 import asyncio, re, time, traceback, pickle, socket, threading, schedule, aiofiles, asyncio, cProfile
+from operator import call
 from datetime import datetime
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -230,8 +231,16 @@ async def task(browser, task_id, prop_dict_part, cursor):
                     input_element.send_keys (
                         f'{curr_prop_dict[pp.agent_first_name]} {curr_prop_dict[pp.agent_last_name]} ~PY~')
 
+                    # Find the create new contact button 
+                    create_contact_btn = await check_element_exists (browser=browser,
+                                                css_selector=html.innerHTML['GHL']['Main']['Create Contact'],
+                                                calling_line=line ())
+
+                    # Click the create new contact btn
+                    create_contact_btn.click()
+
                     # Need to press enter so the Contact name doesn't disappear
-                    input_element.send_keys (Keys.ENTER)
+                    # input_element.send_keys (Keys.ENTER)
 
                     # Find the lead value element
                     input_element = await check_element_exists (browser=create_op_win,

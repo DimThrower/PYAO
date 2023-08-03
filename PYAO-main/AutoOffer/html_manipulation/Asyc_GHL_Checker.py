@@ -307,6 +307,15 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                                  'Create Button'], calling_line=line ())
                     create_btn.click ()
 
+                    # Wait for the deal to be created
+                    await asyncio.sleep (2)
+
+                    # Close the Opportunity Window
+                    close_op_win = await check_element_exists (browser=browser,
+                                                              css_selector=html.innerHTML['GHL']['Main']['Close Op Window'], calling_line=line())
+
+                    close_op_win.click ()
+
                     print (f'({task_id})-({line ()}) Click the Save button to create the opportunity')
                     # await asyncio.sleep(20)
 
@@ -449,11 +458,21 @@ async def task(browser, task_id, prop_dict_part, cursor):
                             start_time = time.time ()
 
                             # Take some time second to scroll to the bottom
-                            while time.time () - start_time < 0.5:
+                            # while time.time () - start_time < 0.5:
                                 # Scroll to the bottom of the div
-                                browser.execute_script ("arguments[0].scrollTop = arguments[0].scrollHeight;",
-                                                        main_scroll_element)
+                            #    browser.execute_script ("arguments[0].scrollTop = arguments[0].scrollHeight;",
+                            #                            main_scroll_element)
                                 # print(f"({task_id}) Scolling to bottom of detials page")
+
+                          # Keep scroll down slowing so all elements can load
+                            print(f"Scrolling to the bottom of the page")
+                            while time.time () - start_time < 30:
+
+                                #Scroll to the bottom of page
+                                browser.execute_script (
+                                        "arguments[0].scrollBy(0, 120);",
+                                    main_scroll_element)
+                                await asyncio.sleep (0.5)
 
                             # Wait some time for all the form elements to load
                             time.sleep(2)
@@ -633,13 +652,24 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                         main_scroll_element)
                                                     # print(f"({task_id}) Scolling to bottom of detials page")
 
-                                                # Find the Title Policy button
-                                                title_policy = await check_element_exists (browser=browser,
-                                                                                           css_selector=
-                                                                                           html.innerHTML['GHL'][
-                                                                                               'Details'][
-                                                                                               'Title Policy'],
-                                                                                           calling_line=line ())
+                                                # Keep scrolling until the Title Policy button is found
+                                                while True:
+                                                    # Find the Title Policy button
+                                                    title_policy = await check_element_exists (browser=browser,
+                                                                                               css_selector=
+                                                                                               html.innerHTML['GHL'][
+                                                                                                   'Details'][
+                                                                                                   'Title Policy'],
+                                                                                               timeout=0.5,
+                                                                                               calling_line=line ())
+
+                                                    if title_policy:
+                                                        break
+
+                                                    #Scroll to the Title Policy Button
+                                                    browser.execute_script (
+                                                            "arguments[0].scrollBy(0, -10);",
+                                                        main_scroll_element)
 
                                                 start_time = time.time ()
                                                 while time.time () - start_time < 0.5:
@@ -649,7 +679,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                         main_scroll_element)
                                                     # print(f"({task_id}) Scolling to bottom of detials page")
 
-                                                # CLick the Title Policy button
+                                                # Click the Title Policy button
                                                 (await check_only_element_exists (element=title_policy,
                                                                                   calling_line=line ())).click ()
 

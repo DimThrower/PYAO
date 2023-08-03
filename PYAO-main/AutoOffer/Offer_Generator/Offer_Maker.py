@@ -243,7 +243,7 @@ def create_offers():
                 
                 # Set path for pdf file
                 file_path = f'{offer_folder}\\Cash Offer for {modified_string_filename}.pdf'
-                print(f"Path for file offer_folder: {offer_folder} \nmodified_string_filename: {modified_string_filename}\nfile path: {file_path}")
+                print(f"Path for file offer_folder: {offer_folder}\nmodified_string_filename: {modified_string_filename}\nfile path: {file_path}")
 
 
                 start_time = time.time()

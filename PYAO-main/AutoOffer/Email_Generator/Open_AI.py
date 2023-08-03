@@ -61,7 +61,7 @@ def create_query(prop):
     {public_remarks}
 
     INCLUDE THE FOLLOWING PIECES IN YOUR RESPONSE:
-        Using the public remarks craft a sentence detailing positives about the home and why it's a good fit for you.
+        Using the public remarks craft a sentence detailing positives about the home and why it's a good fit for you. Do not reference public realtor remarks word for word in the email.
         Use any negative aspect in the public remarks to craft a few sentences justisfying your offer.
         Craft 1 sentence emphasizing cash funding for the deal, a quick close, and little to no closing costs.
         End the email by displaying an eagerness to work together and provide your contact number: {investor_number}.

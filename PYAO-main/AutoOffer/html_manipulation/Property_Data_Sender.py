@@ -187,7 +187,8 @@ def HAR():
                         print(f'Clicked Linked Page')
 
                         # Check to ensure listing page has loaded
-                        WebDriverWait(browser,60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, html.selectors['har']['listing_dom_check'])))
+                        check_element_exists_BLOCK(browser=browser,css_selector=html.selectors['har']['listing_dom_check'], calling_line=line())
+                        # WebDriverWait(browser,60).until(EC.visibility_of_element_located((By.CSS_SELECTOR, html.selectors['har']['listing_dom_check'])))
 
                         # Refreshing soup instance
                         soup = BeautifulSoup(browser.page_source, 'html.parser')

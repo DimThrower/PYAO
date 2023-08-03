@@ -133,8 +133,9 @@ class HTML:
             "Opportunity Source": "#OpportunitySource > div.n-input-wrapper > div > input",
             "Stage": "#OpportunityStage > div > div.n-base-selection-label",
             "Offer Made": "body > div.n-modal-container > div > div > div.n-scrollbar-container > div > div.n-card.n-modal.hl-modal > div.v-binder-follower-container > div > div > div > div.n-virtual-list.v-vl > div > div > div:nth-child(3)",
-            "My Name": "Charles Watkins",
+            "My Name": "Charles",
             "Create Button": '#CreateUpdateOpportunity',
+            "Close Op Window": '#modal-header-modal-close-btn > span > svg',
             
         }
 
@@ -185,6 +186,7 @@ class HTML:
              # Define Last Additional Check Field by a style to get the very botom                            
             "Last Additional Check Field": "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto > div:nth-child(4) > div.pt-3 > div > div[style='height: 10px;']",
             "Scroll Window": "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto",
+            "Option Ends": "#contact\.option_end_on > div.vdp-datepicker.mt-1 > div:nth-child(1) > input", # This is used to better located the Title policy button
             "Title Policy": "div.mb-2:nth-child(41) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
             "TREC": "div.mb-2:nth-child(50) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
             "Yes HOA": "div.mb-2:nth-child(25) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
@@ -217,7 +219,7 @@ class HTML:
             'user': '#username',
             'password': '#password',
             'login_btn': '#login_btn',
-            'matrix': 'body > div.pageContent > div.pc_content.color_carbon > div:nth-child(3) > div.col-md-4.col-12.order-md-2.order-0 > div:nth-child(1) > a',
+            'matrix': 'body > div.pageContent > div.pc_content.color_carbon > div:nth-child(2) > div.col-md-4.col-12.order-md-2.order-0 > div:nth-child(1) > a',
             'first_mls_link': '#wrapperTable > td:nth-child(11) > span',
             'listing_link': '#wrapperTable > div > div > div:nth-child(3) > div > span > div.mtx-containerNavTabs > ul > li:nth-child(1)',
             'tax_link': '#wrapperTable > div > div > div:nth-child(3) > div > span > div.mtx-containerNavTabs > ul > li:nth-child(2)',

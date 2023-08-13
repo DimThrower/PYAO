@@ -68,7 +68,7 @@ class HTML:
 
         self.innerHTML = {}
         self.innerHTML['saved search page'] = {}
-        self.innerHTML['saved search page']['saved search name'] = 'PYAO'
+        self.innerHTML['saved search page']['saved search name'] = 'PYAO SA'
         self.innerHTML['saved search page']['results'] = 'Results'
 
         self.innerHTML['listing_page'] = {
@@ -88,18 +88,18 @@ class HTML:
         }
 
         self.innerHTML['tax_page'] = {
-            pp.owner_name: "Owner Name:",
-            pp.year_built: "Effective Year Built:",
-            pp.bed: 'Bedrooms:',
-            pp.bath: 'Full Baths:',
-            pp.half_bath: 'Half Baths:',
-            pp.sqft: "Building Sq Ft:",
-            pp.lot: "Lot #:",
-            pp.block: "Block #:",
-            pp.mud: "M.U.D. Information:",
+            pp.owner_name: "Owner Name",
+            pp.year_built: "Year Built",
+            pp.bed: 'Bedrooms',
+            pp.bath: 'Full Baths',
+            pp.half_bath: 'Half Baths',
+            pp.sqft: "Building Sq Ft",
+            pp.lot: "Lot #",
+            pp.block: "Block #",
+            pp.mud: "Water Tax Dist",
             pp.arv: "RealAVM:",
-            pp.subdivision: 'Subdivision:',
-            pp.legal_description: 'Legal Description:',
+            pp.subdivision: 'Subdivision',
+            pp.legal_description: 'Legal Description',
         }
 
         self.innerHTML['tax_page_cs'] = {
@@ -143,7 +143,7 @@ class HTML:
         self.innerHTML['GHL']['Details'] = {
             'My Name': 'Charles',
             'Lead Source': 'AA MLS Listing',
-            'Title Company': ' Title Company ',
+            'Title Company': ' Title Company Providing Policy ',
             "Class": ".form-group",
             'Contact': "#contact-details > div > div > div > div > div:nth-child(2) > div > span",
             'Contact Check Field': "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto > div:nth-child(2) > div.pt-3",
@@ -182,16 +182,16 @@ class HTML:
                                     ' Property In HOA? ': pp.hoa,
                                     ' Buyer Paying For Title Policy ': "Title Policy",
                                     ' Which Contract Would You Like to Send Out? ': 'TREC',
-                                    ' Title Company ': pp.title_company_name,
+                                    ' Title Company Providing Policy ': pp.title_company_name,
                                     }, 
              # Define Last Additional Check Field by a style to get the very botom                            
             "Last Additional Check Field": "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto > div:nth-child(4) > div.pt-3 > div > div[style='height: 10px;']",
             "Scroll Window": "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto",
             "Option Ends": "#contact\.option_end_on > div.vdp-datepicker.mt-1 > div:nth-child(1) > input", # This is used to better located the Title policy button
-            "Title Policy": "div.mb-2:nth-child(41) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
-            "TREC": "div.mb-2:nth-child(50) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
-            "Yes HOA": "div.mb-2:nth-child(25) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
-            "No HOA": "div.mb-2:nth-child(25) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > label:nth-child(2)",
+            "Title Policy": "div.mb-2:nth-child(26) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > label:nth-child(2)",
+            "Yes HOA": "#contact\.property_in_hoa > div.contact\.property_in_hoa > div:nth-child(1) > label",
+            "No HOA": "#contact\.property_in_hoa > div.contact\.property_in_hoa > div:nth-child(2) > label",
+             "TREC": "#contact\.which_contract_would_you_like_to_send_out > div.contact\.which_contract_would_you_like_to_send_out > div:nth-child(1) > label",
             "Save btn": "#contact-details > div > div.hl_contact-details-left.p-0.relative > div > div.h-full.overflow-y-auto > div.form-footer.save.absolute.bottom-0.left-0.bg-white.flex.w-full.justify-between.border-t.p-2.z-\[999\] > div:nth-child(2) > div > button",
 
         }
@@ -206,9 +206,9 @@ class HTML:
             pp.offer_sent: None,
 
             # Set the default values for these
-            pp.escrow_agent: 'Carrie Morrison',
-            pp.title_company_address: '1111 N Loop W Suite 1100, 77008',
-            pp.title_company_name: 'StarTex Title (Carrie)',          
+            pp.escrow_agent: 'Sally Schopp',
+            pp.title_company_address: '2915 W. Bitters Rd. Ste 301, 78248',
+            pp.title_company_name: 'Alamo Title (Sally)',                  
         }
 
         ##pendo-close-guide-f0df2a63
@@ -221,14 +221,14 @@ class HTML:
             'password': '#password',
             'login_btn': '#login_btn',
             'matrix': 'body > div.pageContent > div.pc_content.color_carbon > div:nth-child(2) > div.col-md-4.col-12.order-md-2.order-0 > div:nth-child(1) > a',
-            'first_mls_link': '#wrapperTable > td:nth-child(11) > span',
+            'first_mls_link': '#wrapperTable > td:nth-child(8) > span',
             'listing_link': '#wrapperTable > div > div > div:nth-child(3) > div > span > div.mtx-containerNavTabs > ul > li:nth-child(1)',
-            'tax_link': '#wrapperTable > div > div > div:nth-child(3) > div > span > div.mtx-containerNavTabs > ul > li:nth-child(2)',
+            'tax_link': '#wrapperTable > tbody > tr > td > table > tbody > tr:nth-child(3) > td:nth-child(6) > span > a > img',
             'next_btn': '#m_lblPagingSummary > span > a:nth-child(2)',
             'current_num': '#m_lblPagingSummary > b:nth-child(2)',
             'final_num': '#m_lblPagingSummary > b:nth-child(3)',  
             'listing_dom_check': '#wrapperTable',
-            'tax_dom_check': '#wrapperTable > div > div > div:nth-child(1) > div > div > div.d-borderWidthBottom--1.d-borderStyle--solid.d-bordercolor--systemDark.d-borderWidthRight--0.d-borderWidthTop--0.d-borderWidthLeft--0.d-marginTop--10.col-sm-8 > span',
+            'tax_dom_check': 'body > rlst-root > rlst-reports > mat-sidenav-container > mat-sidenav-content > div > main > rlst-property-details-report > rlst-base-report > article > div > rlst-property-details-body > section > img',
             'mls_id_html': '#wrapperTable > tbody > tr > td > span > table > tbody > tr:nth-child(5) > td.display.d48m10 > table > tbody > tr.d48m11 > td.d48m15 > table > tbody > tr:nth-child(3) > td.d48m27 > span',
         }
 

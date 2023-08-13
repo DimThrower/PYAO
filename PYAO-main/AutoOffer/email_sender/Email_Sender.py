@@ -138,7 +138,7 @@ def main():
                     )
                 
                 # Make random wait time in minutes
-                wait_time = random.randint(4, 7) * 60 
+                wait_time = random.uniform(3.0, 4.5) * 60 
 
                 print(f'({line()}) Email sent, waiting {wait_time/60} minutes until next send')
                 time.sleep(wait_time)

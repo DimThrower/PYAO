@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\PYAO-main",
-    "\\PYAO-main\\AutoOffer"
+    "\\PYAO-main\\AutoOffer",
+    "\\PYAO-main\\AutoOffer\\html_manipulation",
+    "\\PYAO-main\\AutoOffer\\Offer_Generator"
   ],
+  "SelectedNode": "\\PYAO-main\\AutoOffer\\html_manipulation\\Property_Data_Sender.py",
   "PreviewInSolutionExplorer": false
 }

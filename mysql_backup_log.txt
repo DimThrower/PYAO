@@ -1,2 +1,5 @@
 Backup successful
 Backup successful
+Backup failed: error during dump creation
+Backup successful
+Backup successful

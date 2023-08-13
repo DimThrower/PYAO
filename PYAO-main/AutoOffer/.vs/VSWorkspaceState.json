@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Email_Generator",
-    "\\email_sender",
-    "\\html_manipulation",
-    "\\Offer_Generator"
+    ""
   ],
-  "SelectedNode": "\\html_manipulation\\Asyc_GHL_Checker.py",
+  "SelectedNode": "\\calculations",
   "PreviewInSolutionExplorer": false
 }

@@ -42,14 +42,14 @@ def offer_calc(prop_dict):
         # Make offer 70% of listing price
         offer = listing_price * 0.70
 
-        # Subtract a random amount so offers don't seem robotic
-        offer = offer - random.randint(500,3000)     
+    # Subtract a random amount so offers don't seem robotic
+    offer = offer - random.randint(500,3000)     
 
-        # Round offer to the nearest tens place
-        offer = math.floor(offer / 10) * 10
+    # Round offer to the nearest tens place
+    offer = math.floor(offer / 10) * 10
 
-        # Set offer in prop_dict
-        prop_dict[pp.offer_price] = offer
+    # Set offer in prop_dict
+    prop_dict[pp.offer_price] = offer
 
     # Calculate earnest money as 1% of offer price
     earnest_money = prop_dict[pp.offer_price] * 0.01

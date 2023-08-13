@@ -30,6 +30,7 @@ async def check_element_exists(browser, css_selector, timeout=None, count=10, ca
         try:
             # Find the element using the CSS selector
             element = browser.find_element(By.CSS_SELECTOR, css_selector)
+            print(f"Element for check_element_exists: {element}")
             if element.is_displayed() and element.is_enabled():
                 return element  # Return the element when found
         except (NoSuchElementException, StaleElementReferenceException, ElementClickInterceptedException):
@@ -43,7 +44,7 @@ async def check_element_exists(browser, css_selector, timeout=None, count=10, ca
 
         if timeout and time.time() - start_time >= timeout:
             break  # Stop the loop if timeout is reached
-
+    print(f"Could not find selector: {css_selector}")
     return None  # Return None if element is not found within the timeout
 
 async def check_only_element_exists(element, timeout=None, count=10, calling_line=None):
@@ -664,3 +665,15 @@ def bring_window_to_front(window_title):
             print("Error:", e)
     else:
         print("This functionality is currently only supported on Windows.")
+
+def properize (string):
+    # Split the string into words
+    words = string.split()
+
+    # Capitalize the first letter of each word
+    capitalized_words = [word.capitalize() for word in words]
+
+    # Join the words back together with a space
+    formatted_string = " ".join(capitalized_words)
+
+    return formatted_string

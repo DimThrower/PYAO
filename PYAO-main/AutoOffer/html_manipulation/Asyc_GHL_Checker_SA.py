@@ -1,4 +1,5 @@
 import asyncio, re, time, traceback, pickle, socket, threading, schedule, aiofiles, asyncio, cProfile
+from calendar import SATURDAY
 from operator import call
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -8,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import ElementClickInterceptedException, NoSuchElementException, NoSuchWindowException, \
     StaleElementReferenceException
-from HTML import HTML, PropertyProfile
+from HTML_SA import HTML, PropertyProfile
 from HTML_ACTIONS import click, innerHTML_Drill, sim_click
 from chrome_settings import custom_chrome_options, un_custom_chrome_options, generate_random_number
 #import undetected_chromedriver as uc
@@ -22,6 +23,8 @@ import inspect
 
 
 testing = False
+
+save_in_db = False
 
 html = HTML ()
 
@@ -301,13 +304,13 @@ async def task(browser, task_id, prop_dict_part, cursor):
                     opp_source = f'{curr_prop_dict[pp.agent_first_name]}-MLS/PYAO'
                     input_element.send_keys (opp_source)
 
+
                     # Click the Create button
                     create_btn = await check_element_exists (browser=create_op_win,
                                                              css_selector=html.innerHTML['GHL']['Main'][
                                                                  'Create Button'], calling_line=line ())
                     create_btn.click ()
 
-                    # Wait for the deal to be created
                     await asyncio.sleep (10)
 
                     # Close the Opportunity Window
@@ -320,15 +323,16 @@ async def task(browser, task_id, prop_dict_part, cursor):
                     # await asyncio.sleep(20)
 
                     # Update DB to show that deal is available and has been checked
-                    await db_funct.async_multi_db_update (
-                        cursor=cursor,
-                        mls_id=mls_id,
-                        data_dict={
-                            pp.ghl_check: datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                            pp.deal_taken: 'No'
-                        },
-                        overwrite=True
-                    )
+                    if save_in_db:
+                        await db_funct.async_multi_db_update (
+                            cursor=cursor,
+                            mls_id=mls_id,
+                            data_dict={
+                                pp.ghl_check: datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                                pp.deal_taken: 'No'
+                            },
+                            overwrite=True
+                        )
 
                     # Contiuasly run until cards appear
                     while True:
@@ -663,7 +667,9 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                                                                                timeout=0.5,
                                                                                                calling_line=line ())
 
+                                                    print(f"title policy before: {title_policy}")
                                                     if title_policy:
+                                                        print(f"title policy after: {title_policy}")
                                                         break
 
                                                     #Scroll to the Title Policy Button
@@ -734,8 +740,8 @@ async def task(browser, task_id, prop_dict_part, cursor):
                                         except NoSuchElementException:
                                             print (f'({task_id})-({line ()}) InnerHTML: {innerHTML_input}')
                                             # Scroll to the element so elements can be in view
-                                            browser.execute_script ("arguments[0].scrollIntoView();",
-                                                                    form_group_element)
+                                            #browser.execute_script ("arguments[0].scrollIntoView();",
+                                            #                        form_group_element)
 
                                             # Find and click the button element to open the list element
                                             drpdwn_btn = await check_element_exists_tag (browser=form_group_element,
@@ -902,7 +908,7 @@ async def run_tasks(browsers, browser_num):
             # Get the list of properties that have not been checked with GHL
             properties = await db_funct.async_get_all_sorted_with_null (cursor=cursors[0], sort_column=pp.last_updated,
                                                                         null_column=pp.ghl_check)
-
+      
             # Close the database connectio
             # await conn.close()
 
@@ -914,7 +920,7 @@ async def run_tasks(browsers, browser_num):
 
                 # Remove all properties not in HOU
                 for index, property in enumerate(properties):
-                    if property[pp.location] == "HOU":
+                    if property[pp.location] == "SA":
                         filtered_list.append(property)
 
                 properties = filtered_list
@@ -923,6 +929,10 @@ async def run_tasks(browsers, browser_num):
 
                 if len(properties) == 0:
                     break
+
+
+
+                # print(f"Properties: {properties}")
 
                 # Split properties evenly amon the browsers
                 prop_dict_parts = split_list_evenly (list=properties, num_splits=browser_num)
@@ -1130,7 +1140,7 @@ try:
         # Ensure input text to find location is there
         while wait_until_value_disappeared_element_BLOCK (element=input_element, timeout=1):
             # Input text to find location
-            input_element.send_keys ('aquisitions')
+            input_element.send_keys ('sa acquisitions')
 
         # Wait on Houston Location to appear
         wait_until_appeared_BLOCK (browser=browser, css_element=html.innerHTML['GHL']['Main']['Houston Location'],

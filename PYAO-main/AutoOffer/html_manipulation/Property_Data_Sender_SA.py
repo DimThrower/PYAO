@@ -32,6 +32,10 @@ if strict:
     print("CODE IS STRICT: Properties must meet confidence levels")
 else:
     print('CODE IS NOT STRICT: Confidence levels disregarded')
+
+def HAR():
+    # Check to see if db needs to be created
+    db_funct.create_db()
     
     testing = False
     if not testing:

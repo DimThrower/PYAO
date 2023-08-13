@@ -24,7 +24,7 @@ import inspect
 
 testing = False
 
-save_in_db = False
+save_in_db = True
 
 html = HTML ()
 

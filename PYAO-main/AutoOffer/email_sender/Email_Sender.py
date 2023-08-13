@@ -127,6 +127,13 @@ def main():
                     print(f'({line()}) Out side of run time. Waiting for scheduled r')
                     break
 
+                # Select the Houston signature
+                if prop[pp.location] == "HOU":
+                    signature = sig.hou_signature
+
+                # Select the San Antonio signature
+                if prop[pp.location] == "SA":
+                    signature = sig.sa_signature
 
                 bulk_email(
                     to_email = prop[pp.agent_email],
@@ -134,7 +141,7 @@ def main():
                     body = prop[pp.email_body],
                     offer_path = prop[pp.pdf_offer_path],
                     prop = prop,
-                    signature_html = sig.hou_signature,
+                    signature_html = signature,
                     )
                 
                 # Make random wait time in minutes

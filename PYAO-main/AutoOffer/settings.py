@@ -9,7 +9,9 @@ load_env_var()
 chromeDrivePath = r'C:\Script\PYAO-main\chromedriver.exe'
 firefoxDrivePath = r'C:\Program Files\Mozilla Firefox\firefox.exe'
 blank_TREC_file_path = r'file://C:/Script/PYAO-main/Contracts/Blank 1-4 Trec Contract.pdf'
-filled_TREC_file_path = r'C:\Script\PYAO-main\Contracts'
+filled_TREC_file_path_HOU = r'C:\Script\PYAO-main\Contracts\HOU'
+filled_TREC_file_path_SA = r'C:\Script\PYAO-main\Contracts\SA'
+
 IMAP_SERVER = 'imap.gmail.com'
 IMAP_PORT = 993
 EMAIL_ADDRESS = os.getenv('EMAIL_ADDRESS')

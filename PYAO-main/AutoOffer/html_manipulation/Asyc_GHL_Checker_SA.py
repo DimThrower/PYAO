@@ -1189,5 +1189,6 @@ try:
         time.sleep (1)
 
 finally:
+    time.sleep(9999999999)
     for browser in browsers:
         browser.quit ()

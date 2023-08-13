@@ -26,7 +26,16 @@ def create_query(prop):
 
     # Define defualt values
     investor_name = 'Charles Watkins'
-    investor_number = '832-263-6157'
+
+    # Select Houston number if location is HOU
+    if prop[pp.location] == "HOU":
+        investor_number = '832-263-6157'
+        investor_location = 'Houston'
+
+    # Select San Antonio number if location is SA
+    if prop[pp.location] == "SA":
+        investor_number = "210-405-5118"
+        investor_location = 'San Antonio'
 
     # List out the possible intros
     intros = [
@@ -52,7 +61,7 @@ def create_query(prop):
             
 
     query = f"""
-    You are a local Houston investor named {investor_name}. 
+    You are a local {investor_location} investor named {investor_name}. 
     Your goal is to write an personable email to real estate agent, {agent_firstname}, to present an offer of ${offer} on the thier MLS listing located at {address}.
     Start the email with "{rand_intro} This is..." then continue with intent of email
     Do not start off mulitple sentences with the same word.
@@ -123,7 +132,7 @@ def main ():
         for prop in props:
             generate_email_body(prop)
     else:
-        print(f"No properties to creat emails for. Will wait for next run")
+        print(f"No properties to create emails for. Will wait for next run")
 
     print(f'Email body made, waiting for next scheduled run')
 

@@ -23,7 +23,7 @@ pp = PropertyProfile()
 
 # If true - will search through all listings
 # If false - will stop when it encounters first duplicate listing
-search_all_listings = False
+search_all_listings = True
 
 # If True it will only save listings based on confindednce lvlv
 # If false it will save all the listsing

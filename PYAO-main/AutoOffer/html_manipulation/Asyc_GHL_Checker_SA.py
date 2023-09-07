@@ -271,11 +271,11 @@ async def task(browser, task_id, prop_dict_part, cursor):
 
                     # Wait until the items show in the drop down list
                     if await wait_until_value_appeared_tag (browser=browser,
-                                                            tag_name='span',
+                                                            tag_name='div',
                                                             parent_element=drpdwn_list,
                                                             timeout=30):
                         # Find all the items located inside the drpdwn_list to be checked
-                        items = drpdwn_list.find_elements (By.TAG_NAME, 'span')
+                        items = drpdwn_list.find_elements (By.TAG_NAME, 'div')
                         print (f'({task_id})-({line ()}) Items in list: {items}')
                     else:
                         print (f'({task_id})-({line ()}) Cannot find drop down items in create opportunity page')
@@ -291,6 +291,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                             # Click the matching name
 
                             (await check_only_element_exists (element=item, calling_line=line ())).click ()
+                            await asyncio.sleep(.5)
                             print (f'({task_id})-({line ()}) Clicked the owner: {item_innerHTML}')
                             break
 

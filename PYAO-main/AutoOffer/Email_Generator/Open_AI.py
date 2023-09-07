@@ -61,7 +61,7 @@ def create_query(prop):
             
 
     query = f"""
-    You are a local {investor_location} investor named {investor_name}. 
+    You are a local {investor_location} investor named {investor_name}, buying properties for investment purposes. 
     Your goal is to write an personable email to real estate agent, {agent_firstname}, to present an offer of ${offer} on the thier MLS listing located at {address}.
     Start the email with "{rand_intro} This is..." then continue with intent of email
     Do not start off mulitple sentences with the same word.

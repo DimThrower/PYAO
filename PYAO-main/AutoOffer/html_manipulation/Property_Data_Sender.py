@@ -193,7 +193,18 @@ def HAR():
                         # Refreshing soup instance
                         soup = BeautifulSoup(browser.page_source, 'html.parser')
 
+                        #Check to see if the mls id is there
+                        check_element_exists_BLOCK(browser=browser,css_selector=html.selectors['har']['mls_id_html'], calling_line=line(), timeout=30)
+
                         mls_id_element = soup.select_one(html.selectors['har']['mls_id_html'])
+
+                        if mls_id_element:
+                            pass
+                        else:
+                            skip_listing = True
+                            print("Skipping listing because mls id could no be found")
+                            break
+
                         # print(f'MLS Id element from Beautiful Soup {mls_id_element}')
                         mls_id = int(innerHTML_Drill(current_tag=mls_id_element))
                         print(f'MLS ID: {mls_id}')

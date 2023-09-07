@@ -132,7 +132,7 @@ class HTML:
             'Lead Value': "#OpportunityLeadValue > div.n-input-wrapper > div.n-input__input > input",
             'Owner': "#OpportunityOwner > div > div.n-base-selection-label",
            # "Owner drpdwn": "body > div.n-modal-container > div > div > div.n-scrollbar-container > div > div.n-card.n-modal.hl-modal > div:nth-child(4) > div > div > div > div.n-virtual-list.v-vl > div > div",
-            'Owner drpdwn': "body > div.n-modal-container > div > div > div.n-scrollbar-container > div > div.n-card.n-modal.hl-modal > div.v-binder-follower-container > div > div > div > div.n-virtual-list.v-vl > div > div",
+            'Owner drpdwn': "body > div.n-modal-container > div > div > div.n-scrollbar-container > div > div.n-card.n-modal.hl-modal > div:nth-child(4) > div > div > div > div > div > div",
             "Opportunity Source": "#OpportunitySource > div.n-input-wrapper > div > input",
             "Stage": "#OpportunityStage > div > div.n-base-selection-label",
             "Offer Made": "body > div.n-modal-container > div > div > div.n-scrollbar-container > div > div.n-card.n-modal.hl-modal > div.v-binder-follower-container > div > div > div > div.n-virtual-list.v-vl > div > div > div:nth-child(3)",

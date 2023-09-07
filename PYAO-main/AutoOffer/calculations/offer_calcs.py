@@ -12,23 +12,26 @@ def offer_calc(prop_dict):
     # Remove "$" from Listing Price and turn into an integer
     listing_price = int((prop_dict[pp.list_price]).replace("$","").replace(",",""))
 
-    # Check if SQFT exists
+    # Check if SQFT conatins numbers
     if prop_dict[pp.sqft]:
-        # Turn SQFT into an int
-        sqft = int((prop_dict[pp.sqft]).replace("$","").replace(',',""))
+        if prop_dict[pp.sqft].isdigit():
+            # Turn SQFT into an int
+            sqft = int((prop_dict[pp.sqft]).replace("$","").replace(',',""))
 
-        # Set repair to 30 x SQFT
-        prop_dict[pp.repair] = 30 * sqft
+            # Set repair to 30 x SQFT
+            prop_dict[pp.repair] = 30 * sqft
 
-        # Check if ARV exits
-        if prop_dict[pp.arv]:
-            # Remove "$" from ARV and turn into an integer
-            arv = int((prop_dict[pp.arv]).replace("$","").replace(',',""))
+            # Check if ARV exits
+            if prop_dict[pp.arv]:
+                # Remove "$" from ARV and turn into an integer
+                arv = int((prop_dict[pp.arv]).replace("$","").replace(',',""))
     
-            # Calulate offer as ARV x 75% - Repair - 15,000
-            offer = arv * 0.75 - prop_dict[pp.repair] - 15000
+                # Calulate offer as ARV x 75% - Repair - 15,000
+                offer = arv * 0.75 - prop_dict[pp.repair] - 15000
+            else:
+              offer = listing_price * 0.70
         else:
-            offer = listing_price * 0.70
+              offer = listing_price * 0.70
     else:
         offer = listing_price * 0.70
 

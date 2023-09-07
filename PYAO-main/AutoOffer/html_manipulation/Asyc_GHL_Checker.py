@@ -288,7 +288,7 @@ async def task(browser, task_id, prop_dict_part, cursor):
                             # Click the matching name
 
                             (await check_only_element_exists (element=item, calling_line=line ())).click ()
-                            await asyncio.sleep(.5)
+                           
                             print (f'({task_id})-({line ()}) Clicked the owner: {item_innerHTML}')
                             break
 

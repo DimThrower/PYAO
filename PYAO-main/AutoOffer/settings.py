@@ -1,5 +1,8 @@
 from dotenv import load_dotenv
 import os
+from datetime import datetime, time
+
+
 
 def load_env_var():
     load_dotenv(r'C:\Script\PYAO-main\AutoOffer\PYAO.env')
@@ -22,10 +25,20 @@ FOLDER_NAME = 'GHL_Security_Code'
 HAR_USERNAME = os.getenv('HAR_username')
 HAR_PASSWORD = os.getenv('HAR_PASSWORD')
 OPENAI_API_KEY = os.getenv('OPENAI_KEY')
+GHL_HOU_API_KEY = os.getenv('GHL_HOU_API')
+GHL_SA_API_KEY = os.getenv('GHL_SA_API')
+
 db_host = 'localhost'
 db_user = 'root'
 db_password = os.getenv('DB_PASSWORD')
 db_name = 'auto_offer'
 db_table_name = 'property'
+
+offer_start_hour = 7
+offer_end_hour = 21
+short_wait = 3.0 # seconds
+long_wait = 4.5 # seconds
+avg_wait = (short_wait+long_wait)/2
+max_offers = (offer_end_hour-offer_start_hour)*60/avg_wait*0.70
 
 

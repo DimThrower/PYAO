@@ -153,9 +153,9 @@ def main():
             print(f'({line()}) No properties to send offer on. Wait for the next schedule')
 
 def job():
-    current_time = datetime.datetime.now().time()
-    start_time = datetime.time(hour=7, minute=0)  # 7:00 AM
-    end_time = datetime.time(hour=21, minute=0)   # 9:00 PM
+    current_time = datetime.now().time()
+    start_time = datetime.time(hour=settings.offer_start, minute=0)  # 7:00 AM
+    end_time =  datetime.time(hour=settings.offer_end_hour, minute=0)  # 9:00 PM
 
     if start_time <= current_time <= end_time:
         main()

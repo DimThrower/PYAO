@@ -1,4 +1,5 @@
 import inspect, time, re, socket, pickle, schedule
+from itertools import zip_longest
 from datetime import datetime
 from bs4 import BeautifulSoup
 from HTML import HTML, PropertyProfile
@@ -14,6 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import asyncio
+from datetime import datetime
 
 # Check to see if db needs to be created
 # db_funct.create_db()
@@ -145,8 +147,24 @@ def HAR():
 
             # Loop through all the pages
             while current_num+1 <= final_num:
-                print(f'Curent number: {current_num}')
+                print(f'Current number: {current_num}')
                 temp_prop_dict = {}
+
+                # Get the total amount of offers to send
+                pending_offers_list = db_funct.get_sorted_rows_with_null_and_not_null(sort_column=pp.last_updated, 
+                                                                  null_list=[pp.offer_sent,
+                                                                               pp.deal_taken
+                                                                               ])
+                if pending_offers_list:
+                    pending_offers = len(pending_offers_list)
+
+                    print(f"Pending offer: {pending_offers} Additionally allowed offers: {settings.max_offers-pending_offers}")
+
+                    if settings.max_offers > pending_offers:
+                        pass
+                    else:
+                        print(f"Reached max deals")
+                        end_code=True
 
                 # Check if code should continue
                 if end_code:

@@ -148,6 +148,22 @@ def HAR():
                 print(f'Curent number: {current_num}')
                 temp_prop_dict = {}
 
+                # Get the total amount of offers to send
+                pending_offers_list = db_funct.get_sorted_rows_with_null_and_not_null(sort_column=pp.last_updated, 
+                                                                  null_list=[pp.offer_sent,
+                                                                               pp.deal_taken
+                                                                               ])
+                if pending_offers_list:
+                    pending_offers = len(pending_offers_list)
+
+                    print(f"Pending offer: {pending_offers} Additionally allowed offers: {settings.max_offers-pending_offers}")
+
+                    if settings.max_offers > pending_offers:
+                        pass
+                    else:
+                        print(f"Reached max deals")
+                        end_code=True
+
                 # Check if code should continue
                 if end_code:
                     print('Waiting for next scheduled run')

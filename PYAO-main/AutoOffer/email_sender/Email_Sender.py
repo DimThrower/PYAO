@@ -11,6 +11,7 @@ from AutoOffer.db import db_funct
 from Signatures import Signatures
 import datetime
 from AutoOffer.misc import line
+from AutoOffer.ghl_api.update import opp_update
 
 # Create Property profile instance
 pp = HTML.PropertyProfile()

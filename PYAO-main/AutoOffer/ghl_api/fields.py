@@ -1,6 +1,6 @@
 import token
-from mapping import create_custom_fields_map, create_stage_map, create_users_map
-from get import get_data
+from AutoOffer.ghl_api.mapping import create_custom_fields_map, create_stage_map, create_users_map
+from AutoOffer.ghl_api.get import get_data
 from AutoOffer import settings
 
 def createCustomFieldDict(token,
@@ -33,7 +33,7 @@ def createCustomFieldDict(token,
             {"id":cf.contact_year_build, "value":yrbuilt_value},
             {"id":cf.contact_property_in_hoa, "value":hoa_value},
             {"id":cf.contact_after_repair_value_arv, "value":arv_value},
-            {"id":cf.contact_after_repair_value_arv, "value":rehab_value},
+            {"id":cf.contact_estimated_rehab, "value":rehab_value},
             {"id":cf.contact_deal_fee, "value":fee_value},
             {"id":cf.contact_potential_investor_sales_price, "value":sale_price_value},
             {"id":cf.contact_sellers_asking_price, "value":asking_value},
@@ -67,7 +67,7 @@ def createCustomFieldDict(token,
             {"id":cf.contact_year_build, "value":yrbuilt_value},
             {"id":cf.contact_property_in_hoa, "value":hoa_value},
             {"id":cf.contact_after_repair_value_arv, "value":arv_value},
-            {"id":cf.contact_after_repair_value_arv, "value":rehab_value},
+            {"id":cf.contact_estimated_rehab, "value":rehab_value},
             {"id":cf.contact_deal_fee, "value":fee_value},
             {"id":cf.contact_potential_investor_sales_price, "value":sale_price_value},
             {"id":cf.contact_sellers_asking_price, "value":asking_value},
@@ -76,16 +76,18 @@ def createCustomFieldDict(token,
             {"id":cf.contact_earnest_money, "value":em_value},
             {"id":cf.contact_option_fee, "value":om_value},
             {"id":cf.contact_contract_option_days, "value":option_days_value},
-            {"id":cf.contact_seller_paying_for_title_policy, "value":[title_policy_value]},
+            {"id":cf.contact_buyer_paying_for_title_policy, "value":[title_policy_value]},
             {"id":cf.contact_escrow_agent, "value":escrow_value},
             {"id":cf.contact_title_company_address_1, "value":title_address_value},
             {"id":cf.contact_title_company, "value":title_company_value},
+            #{"id":cf.contact_title_company_providing_policy, "value":title_company_providing_value},
             {"id":cf.contact_trec_special_provisionsamendment, "value":provisions_value},
             {"id":cf.contact_house_built_before_1978, "value":[lbp_value]},
             {"id":cf.contact_which_contract_would_you_like_to_send_out, "value":trec_value}
        ]
 
     return custom_fields_dict
+
 
 def build_custom_fields_class(token):
     class CustomFields:
@@ -102,7 +104,7 @@ def build_custom_fields_class(token):
     #print(cf.contact_deal_fee)
 
     return(cf)
-
+'''
 def build_stage_class(token):
     class Stages:
         pass
@@ -133,3 +135,4 @@ def build_users_class(token):
 
     print(users.CharlesWatkins)
     return users
+'''

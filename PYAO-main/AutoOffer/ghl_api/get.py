@@ -8,4 +8,3 @@ def get_data(url, token):
 
     response = requests.request("GET", url, headers=headers, data=payload)
     return response.text
-

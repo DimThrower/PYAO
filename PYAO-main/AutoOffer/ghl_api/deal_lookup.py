@@ -1,14 +1,15 @@
 from datetime import datetime
 from AutoOffer import settings
 import requests, json
-from get import get_data
-from get_time import get_time
+from AutoOffer.ghl_api.get import get_data
+from AutoOffer.ghl_api.get_time import get_time
 
-def deal_taken_check(pipeline_id, deal_query, days_back=45, token=settings.GHL_HOU_API_KEY):
+def deal_lookup(pipeline_id, deal_query, days_back, token):
     # set time for when deals are still viable
     time_cutoff = get_time(days_back=days_back)
 
     url = f"https://rest.gohighlevel.com/v1/pipelines/{pipeline_id}/opportunities?query={deal_query}"
+    #print(url)
     json_response = get_data(url=url, token=token)
 
     if json_response:
@@ -16,6 +17,7 @@ def deal_taken_check(pipeline_id, deal_query, days_back=45, token=settings.GHL_H
         response_data = json.loads(json_response)   
         #print(response_data)
 
+        #print(response_data)
         opportunities = response_data.get("opportunities", [])
 
         # Filter opportunities
@@ -23,9 +25,9 @@ def deal_taken_check(pipeline_id, deal_query, days_back=45, token=settings.GHL_H
 
         if filtered_opportunities:
             if len(filtered_opportunities) == 0:
-                return "No"
+                return ["No", filtered_opportunities]
             else:
-                print(filtered_opportunities)
-                return "Yes"
+                #print(filtered_opportunities)
+                return ["Yes", filtered_opportunities]
 
-    return "No"
+    return ["No", filtered_opportunities]

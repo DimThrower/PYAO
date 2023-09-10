@@ -1,7 +1,7 @@
 import json, re
 
 from AutoOffer import settings
-from get import get_data
+from AutoOffer.ghl_api.get import get_data
 
 def create_stage_map(token):
     try:
@@ -69,5 +69,6 @@ def create_users_map(token):
         if formatted_user_key and user_id:
             users_map[formatted_user_key] = user_id
 
+    # print(users_map)
     return users_map
 

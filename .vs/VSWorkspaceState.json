@@ -3,14 +3,11 @@
     "",
     "\\PYAO-main",
     "\\PYAO-main\\AutoOffer",
-    "\\PYAO-main\\AutoOffer\\calculations",
     "\\PYAO-main\\AutoOffer\\db",
-    "\\PYAO-main\\AutoOffer\\Email_Generator",
     "\\PYAO-main\\AutoOffer\\email_sender",
-    "\\PYAO-main\\AutoOffer\\html_manipulation",
-    "\\PYAO-main\\AutoOffer\\Offer_Generator",
-    "\\PYAO-main\\Contracts"
+    "\\PYAO-main\\AutoOffer\\ghl_api",
+    "\\PYAO-main\\AutoOffer\\html_manipulation"
   ],
-  "SelectedNode": "\\PYAO-main\\AutoOffer\\Offer_Generator\\Offer_Maker.py",
+  "SelectedNode": "\\PYAO-main\\AutoOffer\\email_sender\\Email_Sender.py",
   "PreviewInSolutionExplorer": false
 }

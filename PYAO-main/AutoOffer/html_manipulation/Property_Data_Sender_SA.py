@@ -14,6 +14,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import asyncio
+from AutoOffer.ghl_api.mapping import create_custom_fields_map, create_stage_map, create_users_map
+from AutoOffer.ghl_api.deal_lookup import deal_lookup
+from AutoOffer.ghl_api.api_key_picker import ghl_api
+from AutoOffer.ghl_api.update import opp_update
+from AutoOffer.ghl_api.ghl_deal_entry import enter_deal
+from misc import format_bed_bath
 
 # Check to see if db needs to be created
 db_funct.create_db()
@@ -421,9 +427,97 @@ def HAR():
                     # Get the MLS Id
                     mls_id = temp_prop_dict.pop(pp.mls_id)
 
+                    # Qualifying lead based paint
+                    try:
+                        if temp_prop_dict[pp.lead_based_paint]:
+                            lbp = "Yes"
+                        else:
+                            lbp = "No"
+                    except KeyError:
+                        lbp = "No"
+
+                    location = temp_prop_dict[pp.location]
+
+                    api_key = ghl_api(location) 
+
+                    users = create_users_map(token=api_key)
+                    pipeline_id, stages = create_stage_map(token=api_key)
+                    layout_input = format_bed_bath(bed=temp_prop_dict[pp.bed],
+                                                    bath=temp_prop_dict[pp.bath],
+                                                    half_bath=temp_prop_dict[pp.half_bath])
+                    deal_taken = enter_deal(
+                                # Contact Information
+                                first_name=temp_prop_dict[pp.agent_first_name],
+                                last_name=f"{temp_prop_dict[pp.agent_last_name]} -PY-",
+                                contact_source="MLS-PYAO",
+                                street_address=temp_prop_dict[pp.steet_address],
+                                city=temp_prop_dict[pp.city],
+                                state=temp_prop_dict[pp.state],
+                                postal_code=temp_prop_dict[pp.zip_Code],
+
+                                # Opportunity Details
+                                assigned_to="CharlesWatkins",
+                                stage="NewLead",
+                                monetary_value=10000,
+                                source=f"{temp_prop_dict[pp.agent_first_name]}-MLS/PYAO",
+                                pipeline_id=pipeline_id,
+
+                                # Additional Details
+                                number_value=temp_prop_dict[pp.agent_cell],
+                                email_value=temp_prop_dict[pp.agent_email],
+                                owner_value='Charles',
+                                source_value='AA Realtor Email',
+                                seller_value=temp_prop_dict[pp.owner_name],
+                                county_value=temp_prop_dict[pp.county],
+                                subdivision_value=temp_prop_dict[pp.subdivision],
+                                lot_value=temp_prop_dict[pp.lot],
+                                block_value=temp_prop_dict[pp.block],
+                                legal_value=temp_prop_dict[pp.legal_description],
+                                sqft_value=temp_prop_dict[pp.sqft],
+                                bedbath_value=layout_input,
+                                yrbuilt_value=temp_prop_dict[pp.year_built],   
+                                hoa_value=temp_prop_dict[pp.hoa],
+                                arv_value=temp_prop_dict[pp.arv],
+                                rehab_value=temp_prop_dict[pp.repair],
+                                fee_value='10000',
+                                sale_price_value=None,
+                                asking_value=temp_prop_dict[pp.list_price],
+                                offer_value=temp_prop_dict[pp.offer_price],
+                                close_value=None,
+                                em_value=temp_prop_dict[pp.em],
+                                om_value=temp_prop_dict[pp.om],
+                                option_days_value=temp_prop_dict[pp.option_days],
+                                title_policy_value='Yes',
+                                escrow_value=temp_prop_dict[pp.escrow_agent],
+                                title_address_value=temp_prop_dict[pp.title_company_address],
+                                title_company_value=temp_prop_dict[pp.title_company_name],
+                                provisions_value="Buyer agrees to pay for all standard closing cost excluding due taxes, liens, and brokerage fees.",
+                                lbp_value=lbp,
+                                trec_value="TREC 1-4",
+
+                                # Notes
+                                notes=temp_prop_dict[pp.public_remarks],
+
+                                # Other Parameters
+                                users_map=users,
+                                stages_map=stages,
+                                days_back=45,
+                                token=api_key,
+                                location=location,
+                    )
+
                     # Add the listing to the db
                     db_funct.multi_db_update(mls_id=mls_id, data_dict=temp_prop_dict)
-                    print(f"temp prop dict: {temp_prop_dict}")
+
+                    # Update DB to show that deal is available and has been checked
+                    db_funct.multi_db_update (
+                        mls_id=mls_id,
+                        data_dict={
+                            pp.ghl_check: datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                            pp.deal_taken: deal_taken
+                        },
+                        overwrite=True
+                    )
                         
                     # Add to the temp_Dict to the prop_dict, using the ml id as the key
                     # prop_dict[mls_id] = temp_prop_dict

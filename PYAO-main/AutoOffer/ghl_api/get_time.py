@@ -13,5 +13,5 @@ def get_time(days_back):
     # Convert the string to a datetime object
     datetime_obj = datetime.strptime(formatted_date, '%Y-%m-%dT%H:%M:%S.%fZ')
 
-    print(formatted_date)
+    #print(formatted_date)
     return(datetime_obj)

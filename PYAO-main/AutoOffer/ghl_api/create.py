@@ -1,6 +1,6 @@
 import requests, json, uuid
 from AutoOffer import settings
-from delete import delete_data
+from AutoOffer.ghl_api.delete import delete_data
 
 def generate_email_guid():
     random_guid = str(uuid.uuid4())
@@ -50,7 +50,7 @@ def create_contact(first_name, token,contact_source=None,
         # Extract the contact ID
         contact_id = response_json.get("contact", {}).get("id", None)
        # print (response_json.get("contact", {}).get("customField", None))
-       # print(contact_id)
+        print(contact_id)
         return contact_id
     else:
         print(f"Error: {response.status_code}\n{response.text}")
@@ -78,7 +78,9 @@ def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stag
 
     # Check the response status code and return a result
     if response.status_code == 200:
-        print(response.json())
+        print("Opportunity created")
+        pass
+       # print(response.json())
     else:
         # Delete Opp if contact was not properly saved
         delete_data(url=f"https://rest.gohighlevel.com/v1/contacts/{contact_id}", token=token)
@@ -86,3 +88,27 @@ def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stag
 
         print(f"Error: {response.status_code}\n{response.text}")
         return f"Error: {response.status_code}\n{response.text}"
+
+def create_note(contact_id, notes, token, user_id):
+    url = f"https://rest.gohighlevel.com/v1/contacts/{contact_id}/notes/"
+
+    payload = {
+        "body": notes,
+        "userId":  user_id,
+    }
+
+    headers = {
+        'Authorization': f'Bearer {token}'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    # Check the response status code and return a result
+    if response.status_code == 200:
+        print("Note created")
+        pass
+        #print(response.json())
+    else:
+        print(f"Error: {response.status_code}\n{response.text}")
+        return f"Error: {response.status_code}\n{response.text}"
+

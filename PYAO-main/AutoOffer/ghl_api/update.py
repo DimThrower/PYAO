@@ -9,7 +9,7 @@ def opp_update(token, street_address, days_back, stage_id, status="open", pipeli
     # Take the first two words (if they exist)
     deal_query = ' '.join(words[:2])
 
-   # print([deal_query])
+    print([deal_query])
 
     deal_taken, opp = deal_lookup(pipeline_id=pipeline_id, deal_query=deal_query, days_back=days_back, token=token)
    # print(opp)

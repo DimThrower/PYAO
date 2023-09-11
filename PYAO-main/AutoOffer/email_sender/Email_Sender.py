@@ -12,6 +12,8 @@ from Signatures import Signatures
 import datetime
 from AutoOffer.misc import line
 from AutoOffer.ghl_api.update import opp_update
+from AutoOffer.ghl_api.mapping import create_custom_fields_map, create_stage_map, create_users_map
+from AutoOffer.ghl_api.api_key_picker import ghl_api
 
 # Create Property profile instance
 pp = HTML.PropertyProfile()
@@ -48,13 +50,20 @@ def send_scheduled_email(server, sender, to, message, prop):
     try:
         server.sendmail(sender, to, message)
         print("Email sent successfully!")
-
+        
         # Update the  Offer_Sent column to show offer ws sent
         db_funct.multi_db_update(
             mls_id=prop[pp.mls_id],
             data_dict={pp.offer_sent: datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')},
             overwrite=True
         )
+ 
+        # Switch the the deal to offer made
+        api_key = ghl_api(location=prop[pp.location])
+        print(api_key)
+        users = create_users_map(token=ghl_api)
+        pipeline_id, stages = create_stage_map(token=api_key)
+        opp_update(token=api_key, street_address=prop[pp.steet_address], days_back=45, stage_id=stages.get("1stOfferMade/FollowUp"), pipeline_id=pipeline_id)
 
     except Exception as e:
         print("An error occurred while sending the email: {}".format(e))
@@ -68,7 +77,7 @@ def bulk_email(**kwargs):
     signature_html = kwargs['signature_html']
 
     print(f'Body: {body}')
-    # Connect to the SMTP server
+    # Connect to the SMTP server 
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
     smtp_username = settings.EMAIL_ADDRESS
@@ -101,12 +110,12 @@ def main():
         # Define session time interaval in minutes
         # sesh_time = 30*60
 
-
         # Find all the properties that need offer sent on them by checking if the Offer_Sent field in NULL
         props = db_funct.get_sorted_rows_with_null_and_not_null(sort_column=pp.last_updated, 
                                                                 null_list=[pp.offer_sent],
                                                                 not_null_list=[pp.email_body,
                                                                             pp.pdf_offer_path,])
+
         # print(f'Properties to send offer on {props}')
 
         if props:
@@ -119,8 +128,8 @@ def main():
 
                 # Check if in acceptable time range
                 current_time = datetime.datetime.now().time()
-                start_time = datetime.time(hour=7, minute=0)  # 7:00 AM
-                end_time = datetime.time(hour=21, minute=0)   # 9:00 PM
+                start_time = datetime.time(hour=settings.offer_start_hour, minute=0)  # 7:00 AM
+                end_time = datetime.time(hour=settings.offer_end_hour, minute=0)   # 9:00 PM
 
                 if start_time <= current_time <= end_time:
                     pass
@@ -154,8 +163,8 @@ def main():
             print(f'({line()}) No properties to send offer on. Wait for the next schedule')
 
 def job():
-    current_time = datetime.now().time()
-    start_time = datetime.time(hour=settings.offer_start, minute=0)  # 7:00 AM
+    current_time = datetime.datetime.now().time()
+    start_time = datetime.time(hour=settings.offer_start_hour, minute=0)  # 7:00 AM
     end_time =  datetime.time(hour=settings.offer_end_hour, minute=0)  # 9:00 PM
 
     if start_time <= current_time <= end_time:

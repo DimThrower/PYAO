@@ -155,10 +155,11 @@ def HAR():
                 temp_prop_dict = {}
 
                 # Get the total amount of offers to send
-                pending_offers_list = db_funct.get_sorted_rows_with_null_and_not_null(sort_column=pp.last_updated, 
-                                                                  null_list=[pp.offer_sent,
-                                                                               pp.deal_taken
-                                                                               ])
+                pending_offers_list =  db_funct.get_sorted_rows_with_values_and_null(sort_column=pp.last_updated, 
+                                                                  null_column=pp.offer_sent,
+                                                                  value_dict = {pp.deal_taken:"No"}
+                )
+
                 if pending_offers_list:
                     pending_offers = len(pending_offers_list)
 
@@ -320,6 +321,7 @@ def HAR():
                                     temp_prop_dict[pp.agent_last_name] = last_name
                                 else:
                                     print('Could not extract first name')   
+                                    temp_prop_dict[pp.agent_last_name] = None
 
                             # Handel HOA
                             elif html.innerHTML['listing_page'][pp.hoa] in value:

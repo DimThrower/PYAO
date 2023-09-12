@@ -69,6 +69,7 @@ class HTML:
         self.innerHTML = {}
         self.innerHTML['saved search page'] = {}
         self.innerHTML['saved search page']['saved search name'] = 'PYAO SA'
+        self.innerHTML['saved search page']['saved search name_2'] = 'PYAO SA-2'
         self.innerHTML['saved search page']['results'] = 'Results'
 
         self.innerHTML['listing_page'] = {

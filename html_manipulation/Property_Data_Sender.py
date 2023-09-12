@@ -159,10 +159,11 @@ def HAR():
                 temp_prop_dict = {}
 
                 # Get the total amount of offers to send
-                pending_offers_list = db_funct.get_sorted_rows_with_null_and_not_null(sort_column=pp.last_updated, 
-                                                                  null_list=[pp.offer_sent,
-                                                                               pp.deal_taken
-                                                                               ])
+                pending_offers_list =  db_funct.get_sorted_rows_with_values_and_null(sort_column=pp.last_updated, 
+                                                                  null_column=pp.offer_sent,
+                                                                  value_dict = {pp.deal_taken:"No"}
+                    )
+
                 if pending_offers_list:
                     pending_offers = len(pending_offers_list)
 
@@ -396,7 +397,8 @@ def HAR():
                                     # print(last_name)
                                     temp_prop_dict[pp.agent_last_name] = last_name
                                 else:
-                                    print('Could not extract first name')   
+                                    print('Could not extract first name') 
+                                    temp_prop_dict[pp.agent_last_name] = None
 
                             # Handle Public and Agent Remarks
 
@@ -586,6 +588,8 @@ def HAR():
                             },
                             overwrite=True
                         )
+
+
                         
                         # Add to the temp_Dict to the prop_dict, using the ml id as the key
                         # prop_dict[mls_id] = temp_prop_dict

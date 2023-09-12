@@ -35,10 +35,10 @@ db_name = 'auto_offer'
 db_table_name = 'property'
 
 offer_start_hour = 7
-offer_end_hour = 22
+offer_end_hour = 21
 short_wait = 3.0 # seconds
 long_wait = 4.5 # seconds
 avg_wait = (short_wait+long_wait)/2
-max_offers = (offer_end_hour-offer_start_hour)*60/avg_wait*0.70
+max_offers = 25#SSSSSSSSSSSSSSSSS(offer_end_hour-offer_start_hour)*60/avg_wait*0.70
 
 

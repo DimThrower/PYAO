@@ -3,10 +3,7 @@
     "",
     "\\PYAO-main",
     "\\PYAO-main\\AutoOffer",
-    "\\PYAO-main\\AutoOffer\\db",
-    "\\PYAO-main\\AutoOffer\\email_sender",
-    "\\PYAO-main\\AutoOffer\\ghl_api",
-    "\\PYAO-main\\AutoOffer\\html_manipulation"
+    "\\PYAO-main\\AutoOffer\\email_sender"
   ],
   "SelectedNode": "\\PYAO-main\\AutoOffer\\email_sender\\Email_Sender.py",
   "PreviewInSolutionExplorer": false

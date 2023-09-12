@@ -50,7 +50,8 @@ def create_contact(first_name, token,contact_source=None,
         # Extract the contact ID
         contact_id = response_json.get("contact", {}).get("id", None)
        # print (response_json.get("contact", {}).get("customField", None))
-        print(contact_id)
+        # print(contact_id)
+        print(f'Success: Contact created in GHL')
         return contact_id
     else:
         print(f"Error: {response.status_code}\n{response.text}")
@@ -78,7 +79,7 @@ def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stag
 
     # Check the response status code and return a result
     if response.status_code == 200:
-        print("Opportunity created")
+        print("Success: Opportunity created")
         pass
        # print(response.json())
     else:
@@ -105,7 +106,7 @@ def create_note(contact_id, notes, token, user_id):
 
     # Check the response status code and return a result
     if response.status_code == 200:
-        print("Note created")
+        print("Success: Note created")
         pass
         #print(response.json())
     else:

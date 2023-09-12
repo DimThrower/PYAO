@@ -3,6 +3,7 @@
 3) Download C++ build tools (https://visualstudio.microsoft.com/visual-cpp-build-tools/)
 4) Download MySql (https://downloads.mysql.com/archives/installer/) 
 	* download the larger file
+4.5) Create schema in MySql called "auto_offer"
 5) Download Python into C:/Script folder
 6) Create venv using the following commmand
 	- cd C:\Script\PYAO-main
@@ -17,6 +18,6 @@
 	- pip install -r requirements.txt
 10) ensure the db passwords and user names match in the PYAO.env file
 11) Set up run_scripts.bat (C:\Script\PYAO-main)
-
-
+12)
+Create 'HOU' and 'SA' folders in the following path C:\Script\PYAO-main\Contracts
 

@@ -186,7 +186,8 @@ def multi_db_update(cursor, mls_id, data_dict, overwrite=False, table_name=setti
         values = ','.join(['%s'] * len(data_dict))
         query = f"INSERT INTO {table_name} (mls_id, {columns}) VALUES ({mls_id}, {values})"
         cursor.execute(query, tuple(data_dict.values()))
-        print(query)
+        # print(query)
+        print(f'Success: Deal Entered into DB')
 
 # Will get the first column of a sort
 @connect_to_database

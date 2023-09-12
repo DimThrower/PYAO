@@ -117,13 +117,13 @@ def HAR():
             soup = BeautifulSoup(browser.page_source, 'html.parser')
 
             # find PYAO auto email tag
-            a_tag = soup.find(lambda tag: tag.name == 'a' and html.innerHTML['saved search page']['saved search name'] in tag.text)
+            a_tag = soup.find(lambda tag: tag.name == 'a' and html.innerHTML['saved search page']['saved search name_2'] in tag.text)
 
             # Extract the id of the tag
             a_tag_id = a_tag['id']
 
-            # Click on PYAO
-            click(browser, wait=2, e_type='id', element=a_tag_id, errmsg=f"({inspect.currentframe().f_lineno}) - Could not click {html.innerHTML['saved search page']['saved search name']}")
+            # Click on PYAO-2
+            click(browser, wait=2, e_type='id', element=a_tag_id, errmsg=f"({inspect.currentframe().f_lineno}) - Could not click {html.innerHTML['saved search page']['saved search name_2']}")
 
             time.sleep(1)
             #Refreshing soup instance
@@ -397,7 +397,7 @@ def HAR():
                                     # print(last_name)
                                     temp_prop_dict[pp.agent_last_name] = last_name
                                 else:
-                                    print('Could not extract first name') 
+                                    print('Could not extract first name')
                                     temp_prop_dict[pp.agent_last_name] = None
 
                             # Handle Public and Agent Remarks
@@ -473,6 +473,7 @@ def HAR():
                 if not skip_listing:
                     # Check if listing should be saved
                     print(f"Save Listing?: {save_listing}")
+                    print(f'Propery Details {temp_prop_dict}')
                     if save_listing:
                         # Go back to Listing link to get data for next property
                         click(browser, wait=10, e_type='css', element=html.selectors['har']['listing_link'], errmsg=f'({inspect.currentframe().f_lineno}) - Cannot click Listing link btn')
@@ -482,7 +483,7 @@ def HAR():
 
                         # Attaching the offer dictionary
                         temp_prop_dict.update(html.offer_details)
-                        print(f'After update: {temp_prop_dict}')                
+                        #print(f'After update: {temp_prop_dict}')                
 
                         # Calculate repair, offer price, and earnest money
                         offer_calc(temp_prop_dict)
@@ -588,7 +589,6 @@ def HAR():
                             },
                             overwrite=True
                         )
-
 
                         
                         # Add to the temp_Dict to the prop_dict, using the ml id as the key

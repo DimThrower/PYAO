@@ -418,7 +418,7 @@ def HAR():
 
                     # Attaching the offer dictionary
                     temp_prop_dict.update(html.offer_details)
-                    print(f'After update: {temp_prop_dict}')                
+                    print(f'PRopety Details: {temp_prop_dict}')                
 
                     # Calculate repair, offer price, and earnest money
                     offer_calc(temp_prop_dict)              

@@ -10,3 +10,4 @@ mysql-connector-python==8.0.33
 PyGetWindow==0.0.9
 schedule==1.2.0
 selenium==4.9.1
+PyAutoGUI==0.9.54

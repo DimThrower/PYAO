@@ -403,6 +403,7 @@ def HAR():
 
                 # Check if listing was skipped
                 if not skip_listing:
+                    print(f'Prop Details: {temp_prop_dict}')       
 
                     # Go back to Listing link to get data for next property
                     click(browser, wait=10, e_type='css', element=html.selectors['har']['listing_link'], errmsg=f'({inspect.currentframe().f_lineno}) - Cannot click Listing link btn')
@@ -417,8 +418,7 @@ def HAR():
                     temp_prop_dict[pp.zip_Code] = temp_prop_dict[pp.zip_Code].split('-')[0] 
 
                     # Attaching the offer dictionary
-                    temp_prop_dict.update(html.offer_details)
-                    print(f'After update: {temp_prop_dict}')                
+                    temp_prop_dict.update(html.offer_details)                             
 
                     # Calculate repair, offer price, and earnest money
                     offer_calc(temp_prop_dict)              

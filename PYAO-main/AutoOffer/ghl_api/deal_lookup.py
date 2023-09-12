@@ -11,6 +11,7 @@ def deal_lookup(pipeline_id, deal_query, days_back, token):
     url = f"https://rest.gohighlevel.com/v1/pipelines/{pipeline_id}/opportunities?query={deal_query}"
     #print(url)
     json_response = get_data(url=url, token=token)
+    print (f'json response {json_response}')
 
     if json_response:
         # Parse the JSON response
@@ -22,7 +23,7 @@ def deal_lookup(pipeline_id, deal_query, days_back, token):
 
         # Filter opportunities
         filtered_opportunities = [opp for opp in opportunities if datetime.strptime(opp['updatedAt'], '%Y-%m-%dT%H:%M:%S.%fZ') > time_cutoff]
-
+        print(f'Filtered Results {filtered_opportunities}')
         if filtered_opportunities:
             if len(filtered_opportunities) == 0:
                 return ["No", filtered_opportunities]

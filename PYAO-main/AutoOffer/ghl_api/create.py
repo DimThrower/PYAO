@@ -1,16 +1,20 @@
-import requests, json, uuid
+import requests
+import json
+import uuid
 from AutoOffer import settings
 from AutoOffer.ghl_api.delete import delete_data
+
 
 def generate_email_guid():
     random_guid = str(uuid.uuid4())
     formatted_guid = f"{random_guid}@python.com"
     return formatted_guid
 
-def create_contact(first_name, token,contact_source=None,
+
+def create_contact(first_name, token, contact_source=None,
                    email=generate_email_guid(), phone=None, last_name=None,
-                   street_address=None, city=None, state=None, 
-                   country=None,postal_code=None, custom_field=None,  tags=None,  website=None,
+                   street_address=None, city=None, state=None,
+                   country=None, postal_code=None, custom_field=None,  tags=None,  website=None,
                    date_of_birth=None, company_name=None, url="https://rest.gohighlevel.com/v1/contacts/"):
 
     # Create the payload as a dictionary
@@ -43,7 +47,7 @@ def create_contact(first_name, token,contact_source=None,
     # Parse the respnse JSON
     response_json = json.loads(response.text)
 
-    #print(custom_field)
+    # print(custom_field)
 
     # Check the response status code and return a result
     if response.status_code == 200:
@@ -54,8 +58,9 @@ def create_contact(first_name, token,contact_source=None,
         print(f'Success: Contact created in GHL')
         return contact_id
     else:
-        print(f"Error: {response.status_code}\n{response.text}")
-        return f"Error: {response.status_code}\n{response.text}"
+        raise Exception(
+            f"Error with contact create: {response.status_code}\n{response.text}")
+
 
 def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stage_id, source, token, location_id=None, status="open"):
     url = f"https://rest.gohighlevel.com/v1/pipelines/{pipeline_id}/opportunities/"
@@ -65,8 +70,8 @@ def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stag
         "locationId": location_id,
         "title": title,
         "stageId": stage_id,
-        "status":status,
-        "contactId":contact_id,
+        "status": status,
+        "contactId": contact_id,
         "monetaryValue": monetary_value,
         "assignedTo": assigned_to,
         "source": source,
@@ -83,18 +88,20 @@ def create_opp(title, contact_id, assigned_to, monetary_value, pipeline_id, stag
         pass
        # print(response.json())
     else:
-        # Delete Opp if contact was not properly saved
-        delete_data(url=f"https://rest.gohighlevel.com/v1/contacts/{contact_id}", token=token)
-        print(f'Opportunity creation error. Deleted Contact')
+        # Delete Opp if contact was not properly save
+        print(f'Opportunity creation error. Deleted Contact {title}')
+        delete_data(
+            url=f"https://rest.gohighlevel.com/v1/contacts/{contact_id}", token=token)
 
-        print(f"Error: {response.status_code}\n{response.text}")
-        return f"Error: {response.status_code}\n{response.text}"
+        raise Exception(
+            f"Error with opportunity creation: {response.status_code}\n{response.text}")
 
-def create_note(contact_id, notes, token, user_id):
+
+def create_note(contact_id, dom, notes, token, user_id):
     url = f"https://rest.gohighlevel.com/v1/contacts/{contact_id}/notes/"
 
     payload = {
-        "body": notes,
+        "body": f"{notes}\nDOM: {dom}",
         "userId":  user_id,
     }
 
@@ -108,8 +115,7 @@ def create_note(contact_id, notes, token, user_id):
     if response.status_code == 200:
         print("Success: Note created")
         pass
-        #print(response.json())
+        # print(response.json())
     else:
         print(f"Error: {response.status_code}\n{response.text}")
         return f"Error: {response.status_code}\n{response.text}"
-

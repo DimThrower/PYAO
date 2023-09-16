@@ -66,14 +66,17 @@ def create_query(prop):
     Start the email with "{rand_intro} This is..." then continue with intent of email
     Do not start off mulitple sentences with the same word.
 
+
     REALTOR'S REMARKS FROM {agent_firstname}:
     {public_remarks}
 
     INCLUDE THE FOLLOWING PIECES IN YOUR RESPONSE:
         Using the realtor's remarks craft a sentence detailing positives about the home and why it's a good fit for you. Do not reference the realtor's remarks word for word in the email.
-        Use any negative aspect in the realtor's remarks to craft a few sentences justisfying your offer.
+        Jutsify your offfer baecause it gives you the neceassary amount of equity.
+        If there are anything negative about the property mentioned in the realtor remarks, use that a justification as well.
         Craft 1 sentence emphasizing cash funding for the deal, a quick close, and little to no closing costs.
         End the email by displaying an eagerness to work together and provide your contact number: {investor_number}.
+        DO NOT USE THE WORD "FAIR"
         Keep the email between 300 to 400 words
     """
 

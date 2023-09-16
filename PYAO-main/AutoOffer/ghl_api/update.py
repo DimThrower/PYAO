@@ -12,7 +12,7 @@ def opp_update(token, street_address, days_back, stage_id, status="open", pipeli
     print([deal_query])
 
     deal_taken, opp = deal_lookup(pipeline_id=pipeline_id, deal_query=deal_query, days_back=days_back, token=token)
-   # print(opp)
+    print(opp)
     deal_id = opp[0].get("id")
     title = opp[0].get("name")
 

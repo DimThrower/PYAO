@@ -1,4 +1,5 @@
-from AutoOffer.ghl_api.fields import createCustomFieldDict#, build_stage_class, build_users_class
+# , build_stage_class, build_users_class
+from AutoOffer.ghl_api.fields import createCustomFieldDict
 from AutoOffer.ghl_api.mapping import create_custom_fields_map, create_stage_map
 from AutoOffer import settings
 from AutoOffer.ghl_api.get import get_data
@@ -6,35 +7,36 @@ from AutoOffer.ghl_api.get_time import get_time
 from AutoOffer.ghl_api.deal_lookup import deal_lookup
 from AutoOffer.ghl_api.create import create_contact, create_opp, create_note
 
+
 def enter_deal(
-                #for contact
-                first_name, last_name, contact_source, 
-                street_address, city, state, 
-                postal_code, location,
+    # for contact
+    first_name, last_name, contact_source,
+    street_address, city, state,
+    postal_code, location,
 
-                #for opporutunity
-                assigned_to, stage,
-                monetary_value, source, pipeline_id,
+    # for opporutunity
+    assigned_to, stage,
+    monetary_value, source, pipeline_id,
 
-                #for additional details
-                number_value, email_value, owner_value,
-                source_value, seller_value, county_value,
-                subdivision_value, lot_value, block_value,
-                legal_value, sqft_value, bedbath_value,
-                yrbuilt_value, hoa_value, arv_value,
-                rehab_value, fee_value, sale_price_value,
-                asking_value, offer_value, close_value,
-                em_value, om_value, option_days_value,
-                title_policy_value, escrow_value, title_address_value,
-                title_company_value, provisions_value, lbp_value,
-                trec_value,
+    # for additional details
+    number_value, email_value, owner_value,
+    source_value, seller_value, county_value,
+    subdivision_value, lot_value, block_value,
+    legal_value, sqft_value, bedbath_value,
+    yrbuilt_value, hoa_value, arv_value,
+    rehab_value, fee_value, sale_price_value,
+    asking_value, offer_value, close_value,
+    em_value, om_value, option_days_value,
+    title_policy_value, escrow_value, title_address_value,
+    title_company_value, provisions_value, lbp_value,
+    trec_value, agent_phone,
 
-                users_map, stages_map,
+    users_map, stages_map,
 
-                days_back, notes,
+    days_back, notes, dom,
 
-                token=settings.GHL_HOU_API_KEY,
-               ):
+    token=settings.GHL_HOU_API_KEY,
+):
 
     # Spit the address for query
     words = street_address.split()
@@ -42,73 +44,74 @@ def enter_deal(
     # Take the first two words (if they exist)
     deal_query = ' '.join(words[:2])
 
-
     # Check to see if the deal is taken
-    deal_taken, opp = deal_lookup(pipeline_id=pipeline_id, deal_query=deal_query, days_back=days_back, token=token)
+    deal_taken, opp = deal_lookup(
+        pipeline_id=pipeline_id, deal_query=deal_query, days_back=days_back, token=token)
     print(f"Is the deal taken? {deal_taken}")
 
     if deal_taken == "No":
         fields = createCustomFieldDict(token=token, location=location,
-                                        number_value = number_value,
-                                        email_value = email_value,
-                                        owner_value = owner_value,
-                                        source_value = source_value,
-                                        seller_value = seller_value,
-                                        county_value = county_value,
-                                        subdivision_value = subdivision_value,
-                                        lot_value = lot_value,
-                                        block_value = block_value,
-                                        legal_value = legal_value,
-                                        sqft_value = sqft_value,
-                                        bedbath_value = bedbath_value,
-                                        yrbuilt_value = yrbuilt_value,
-                                        hoa_value = hoa_value,
-                                        arv_value = arv_value,
-                                        rehab_value = rehab_value,
-                                        fee_value = fee_value,
-                                        sale_price_value = sale_price_value,
-                                        asking_value = asking_value,
-                                        offer_value = offer_value,
-                                        close_value = close_value,
-                                        em_value = em_value,
-                                        om_value = om_value,
-                                        option_days_value = option_days_value,
-                                        title_policy_value = title_policy_value,
-                                        escrow_value = escrow_value,
-                                        title_address_value = title_address_value,
-                                        title_company_value = title_company_value,
-                                        provisions_value = provisions_value,
-                                        lbp_value = lbp_value,
-                                        trec_value = trec_value,
-            )
+                                       number_value=number_value,
+                                       agent_phone=agent_phone,
+                                       email_value=email_value,
+                                       owner_value=owner_value,
+                                       source_value=source_value,
+                                       seller_value=seller_value,
+                                       county_value=county_value,
+                                       subdivision_value=subdivision_value,
+                                       lot_value=lot_value,
+                                       block_value=block_value,
+                                       legal_value=legal_value,
+                                       sqft_value=sqft_value,
+                                       bedbath_value=bedbath_value,
+                                       yrbuilt_value=yrbuilt_value,
+                                       hoa_value=hoa_value,
+                                       arv_value=arv_value,
+                                       rehab_value=rehab_value,
+                                       fee_value=fee_value,
+                                       sale_price_value=sale_price_value,
+                                       asking_value=asking_value,
+                                       offer_value=offer_value,
+                                       close_value=close_value,
+                                       em_value=em_value,
+                                       om_value=om_value,
+                                       option_days_value=option_days_value,
+                                       title_policy_value=title_policy_value,
+                                       escrow_value=escrow_value,
+                                       title_address_value=title_address_value,
+                                       title_company_value=title_company_value,
+                                       provisions_value=provisions_value,
+                                       lbp_value=lbp_value,
+                                       trec_value=trec_value,
+                                       )
 
-        #print(fields)
+        # print(fields)
 
-        contact_id = create_contact(first_name = first_name,
-                                    last_name = last_name,
-                                    contact_source = contact_source,
-                                    street_address = street_address,
-                                    city = city,
-                                    state = state,
-                                    postal_code = postal_code,
+        contact_id = create_contact(first_name=first_name,
+                                    last_name=last_name,
+                                    contact_source=contact_source,
+                                    street_address=street_address,
+                                    city=city,
+                                    state=state,
+                                    postal_code=postal_code,
                                     custom_field=fields,
                                     token=token)
 
-
         if contact_id:
            # users = build_users_class(token=token)
-            create_opp(title = f"{street_address}, {city}, {state} {postal_code}",
+            create_opp(title=f"{street_address}, {city}, {state} {postal_code}",
                        pipeline_id=pipeline_id,
                        contact_id=contact_id,
-                        assigned_to = users_map.get(f"{assigned_to}"),
-                        stage_id = stages_map.get(f"{stage}"),
-                        monetary_value = monetary_value,
-                        source = source,
-                        token = token,
-            )
+                       assigned_to=users_map.get(f"{assigned_to}"),
+                       stage_id=stages_map.get(f"{stage}"),
+                       monetary_value=monetary_value,
+                       source=source,
+                       token=token,
+                       )
 
             # Create notes
-            create_note(contact_id=contact_id, notes=notes, token=token, user_id=users_map.get(f"{assigned_to}"))
+            create_note(contact_id=contact_id, notes=notes, dom=dom,
+                        token=token, user_id=users_map.get(f"{assigned_to}"))
 
     return deal_taken
     '''
@@ -136,6 +139,7 @@ def enter_deal(
                        token=token,
             )
         '''
+
 
 '''
 location = "SA"

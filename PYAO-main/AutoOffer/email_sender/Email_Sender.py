@@ -65,7 +65,7 @@ def send_scheduled_email(server, sender, to, message, prop):
         pipeline_id, stages = create_stage_map(token=api_key)
         opp_update(token=api_key, street_address=prop[pp.steet_address], days_back=45, stage_id=stages.get("1stOfferMade/FollowUp"), pipeline_id=pipeline_id)
 
-    except Exception as e:
+    except PermissionError as e:
         print("An error occurred while sending the email: {}".format(e))
 
 def bulk_email(**kwargs):
@@ -157,7 +157,18 @@ def main():
                 # Make random wait time in minutes
                 wait_time = random.uniform(3.0, 4.5) * 60 
 
-                print(f'({line()}) Email sent, waiting {wait_time/60} minutes until next send')
+                # Get the current time
+                current_time = time.time()
+
+                # Add the wait_time in seconds to the current time
+                future_time = current_time + wait_time
+
+                # Convert the future_time to a human-readable format with abbreviated month, date, and time
+                future_time_formatted = time.strftime('%b %d, %Y %I:%M:%S %p', time.localtime(future_time))
+
+                # Print the formatted time
+                print(f"Future time after adding wait time: {future_time_formatted}")
+
                 time.sleep(wait_time)
         else:
             print(f'({line()}) No properties to send offer on. Wait for the next schedule')
@@ -177,7 +188,7 @@ if __name__ == '__main__':
     job()
 
     # This will run the code as soon as it's starting rather than waiting
-    schedule.every(30).minutes.do(job)
+    schedule.every(3).minutes.do(job)
 
     while True:
         schedule.run_pending()

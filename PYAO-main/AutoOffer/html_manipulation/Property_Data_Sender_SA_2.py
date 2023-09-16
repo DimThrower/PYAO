@@ -449,6 +449,7 @@ def HAR():
                                                     half_bath=temp_prop_dict[pp.half_bath])
                     deal_taken = enter_deal(
                                 # Contact Information
+                                agent_phone = temp_prop_dict[pp.agent_cell],
                                 first_name=temp_prop_dict[pp.agent_first_name],
                                 last_name=f"{temp_prop_dict[pp.agent_last_name]} -PY-",
                                 contact_source="MLS-PYAO",

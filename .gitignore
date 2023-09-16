@@ -14,3 +14,6 @@ Python
 
 # Ignore old files
 old
+
+# Ignore cache
+__pycache__

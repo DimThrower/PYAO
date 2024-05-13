@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AutoOffer",
+    "\\AutoOffer\\Email_Generator",
+    "\\AutoOffer\\html_manipulation",
+    "\\AutoOffer\\Offer_Generator",
+    "\\venv",
+    "\\venv\\Lib",
+    "\\venv\\Lib\\site-packages\\selenium",
+    "\\venv\\Lib\\site-packages\\selenium\\webdriver",
+    "\\venv\\Lib\\site-packages\\selenium\\webdriver\\firefox"
+  ],
+  "SelectedNode": "\\AutoOffer\\html_manipulation\\GHL_Switcher.py",
+  "PreviewInSolutionExplorer": false
+}

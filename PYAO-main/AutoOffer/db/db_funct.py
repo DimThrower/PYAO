@@ -56,6 +56,7 @@ def create_db():
 
     # Close the cursor and reconnect to the database
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS property (
+                        {pp.location} VARCHAR(255),
                         {pp.mls_id} INT PRIMARY KEY,
                         {pp.steet_address} VARCHAR(255),
                         {pp.city} VARCHAR(255),

@@ -52,7 +52,7 @@ def enter_deal(
     if deal_taken == "No":
         fields = createCustomFieldDict(token=token, location=location,
                                        number_value=number_value,
-                                       agent_phone=agent_phone,
+                                    #    agent_phone=agent_phone,
                                        email_value=email_value,
                                        owner_value=owner_value,
                                        source_value=source_value,

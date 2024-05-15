@@ -29,11 +29,11 @@ def offer_calc(prop_dict):
                 # Calulate offer as ARV x 75% - Repair - 15,000
                 offer = arv * 0.75 - prop_dict[pp.repair] - 15000
             else:
-              offer = listing_price * 0.70
+              offer = listing_price * 0.60
         else:
-              offer = listing_price * 0.70
+              offer = listing_price * 0.60
     else:
-        offer = listing_price * 0.70
+        offer = listing_price * 0.60
 
     # inputing defualt offer
     prop_dict[pp.offer_price] = offer
@@ -43,10 +43,10 @@ def offer_calc(prop_dict):
     # less the 60% of list price
     if (offer > listing_price) or (offer < listing_price * 0.60):
         # Make offer 70% of listing price
-        offer = listing_price * 0.70
+        offer = listing_price * 0.68
 
     # Subtract a random amount so offers don't seem robotic
-    offer = offer - random.randint(500,3000)     
+    offer = offer - random.randint(100,1050)     
 
     # Round offer to the nearest tens place
     offer = math.floor(offer / 10) * 10
@@ -58,9 +58,9 @@ def offer_calc(prop_dict):
     earnest_money = prop_dict[pp.offer_price] * 0.01
 
     # Check if earnest money is acceptable
-    if earnest_money > 950:
+    if earnest_money > 500:
         # Max earnest money out at 950
-        prop_dict[pp.em] = 950
+        prop_dict[pp.em] = 500
     
     else:
         # Set earnest money as !% of offer

@@ -59,17 +59,18 @@ def send_scheduled_email(server, sender, to, message, prop):
         )
  
         # Switch the the deal to offer made
-        api_key = ghl_api(location=prop[pp.location])
-        print(api_key)
-        users = create_users_map(token=ghl_api)
-        pipeline_id, stages = create_stage_map(token=api_key)
-        opp_update(token=api_key, street_address=prop[pp.steet_address], days_back=45, stage_id=stages.get("1stOfferMade/FollowUp"), pipeline_id=pipeline_id)
+        # api_key = ghl_api(location=prop[pp.location])
+        # print(api_key)
+        # users = create_users_map(token=ghl_api)
+        # pipeline_id, stages = create_stage_map(token=api_key)
+        # opp_update(token=api_key, street_address=prop[pp.steet_address], days_back=45, stage_id=stages.get("1stOfferMade/FollowUp"), pipeline_id=pipeline_id)
 
     except PermissionError as e:
         print("An error occurred while sending the email: {}".format(e))
 
 def bulk_email(**kwargs):
-    sender = settings.EMAIL_ADDRESS
+    # sender = settings.FROM_EMAIL_ADDRESS
+    sender = settings.EMAIL_ADDRESS_2
     to = kwargs['to_email']
     subject = kwargs['subject']
     body = kwargs['body']
@@ -80,8 +81,8 @@ def bulk_email(**kwargs):
     # Connect to the SMTP server 
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    smtp_username = settings.EMAIL_ADDRESS
-    smtp_password = settings.EMAIL_PASSWORD
+    smtp_username = settings.EMAIL_ADDRESS_2
+    smtp_password = settings.EMAIL_PASSWORD_2
 
     try:
         smtp_conn = smtplib.SMTP(smtp_server, smtp_port)
@@ -147,7 +148,7 @@ def main():
 
                 bulk_email(
                     to_email = prop[pp.agent_email],
-                    subject = f"Cash Offer for {prop[pp.steet_address]}",
+                    subject = f"Offer for {prop[pp.steet_address]}, {prop[pp.zip_Code]}",
                     body = prop[pp.email_body],
                     offer_path = prop[pp.pdf_offer_path],
                     prop = prop,
@@ -155,7 +156,7 @@ def main():
                     )
                 
                 # Make random wait time in minutes
-                wait_time = random.uniform(3.0, 4.5) * 60 
+                wait_time = random.uniform(5.0, 7.5) * 60 
 
                 # Get the current time
                 current_time = time.time()

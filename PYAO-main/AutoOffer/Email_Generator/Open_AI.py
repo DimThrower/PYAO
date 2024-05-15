@@ -126,7 +126,7 @@ def generate_email_body(prop):
 
     llm = OpenAI(openai_api_key=openai_api_key,
                 temperature=0.7,
-                model_name='gpt-4')
+                model_name='gpt-4o')
 
     # est_tokens = llm.get_num_tokens(query)   
     # print(est_tokens)                   

@@ -18,7 +18,6 @@ from AutoOffer import settings
 from AutoOffer.db import db_funct
 from AutoOffer.html_manipulation.HTML import PropertyProfile
 from AutoOffer.Offer_Generator.misc import generate_closing_date
-from AutoOffer.Offer_Generator import write_offer
 from AutoOffer.Offer_Generator import write_offer_v2
 import HTML_TREC
 
@@ -29,7 +28,7 @@ pp = PropertyProfile()
 pdf_text_fields = HTML_TREC.TextFields()
 pdf_box_fields = HTML_TREC.CheckBoxes()
 na = "N/A"
-checked = "/On"
+checked = "Yes" 
 
 time.sleep(4)
 
@@ -129,7 +128,7 @@ def create_offers():
 
                         #4th Page
                         pdf_text_fields.prop_add3: contract_concerning,
-                        pdf_text_fields.req_notices: na,
+                        pdf_text_fields.req_notices: "",
                         pdf_box_fields.seller_disclosure: checked,
                         pdf_text_fields.sd_days: "5",
 

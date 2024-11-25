@@ -7,17 +7,44 @@ from PyPDF2.generic import NameObject
 text_fields = HTML_TREC.TextFields()
 box_fields = HTML_TREC.CheckBoxes()
 
+# def updateCheckboxValues(page, fields):
+#     for j in range(0, len(page['/Annots'])):
+#         writer_annot = page['/Annots'][j].getObject()
+#         for field in fields:
+#             if writer_annot.get('/FT') == '/Btn':  # Check if it's a button field
+#                 if writer_annot.get('/T') == field:
+#                     # print(field)
+#                     writer_annot.update({
+#                         NameObject("/V"): NameObject(fields[field]),
+#                         NameObject("/AS"): NameObject(fields[field])
+#                     })
+
 def updateCheckboxValues(page, fields):
-    for j in range(0, len(page['/Annots'])):
-        writer_annot = page['/Annots'][j].getObject()
-        for field in fields:
-            if writer_annot.get('/FT') == '/Btn':  # Check if it's a button field
-                if writer_annot.get('/T') == field:
-                    # print(field)
-                    writer_annot.update({
-                        NameObject("/V"): NameObject(fields[field]),
-                        NameObject("/AS"): NameObject(fields[field])
-                    })
+    for annot in page['/Annots']:
+        writer_annot = annot.get_object()  # Dereference IndirectObject
+        
+        if writer_annot.get('/FT') == '/Btn':  # Check if it's a button (checkbox)
+            field_name = writer_annot.get('/T')
+            
+            if field_name in fields and fields[field_name] == "Yes":  # Check if this field needs to be updated and the field value is "Yes"
+            
+                # Dereference the '/AP' object if it exists
+                if '/AP' in writer_annot:
+                    ap_dict = writer_annot['/AP'].get_object()
+                    
+                    # Dereference the '/N' object within '/AP'
+                    if '/N' in ap_dict:
+                        appearance_dict = ap_dict['/N'].get_object()
+                        
+                        # Extract the first key as the export value
+                        export_value = list(appearance_dict.keys())[0] if appearance_dict else None
+                        
+                        if export_value:
+                            # Update the checkbox value dynamically using the export value
+                            writer_annot.update({
+                                NameObject("/V"): NameObject(export_value),
+                                NameObject("/AS"): NameObject(export_value)
+                            })
 
 
 def check_filled_fields(pdf_path, pdf_data):

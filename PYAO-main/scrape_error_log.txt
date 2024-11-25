@@ -96,3 +96,197 @@ Stacktrace:
 	RtlClearBits [0x777EC04F+191]
 
 Timestamp: 2024-11-17 23:06:13
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:27:34
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:27:57
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:28:52
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:30:09
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:31:22
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 129
+Current browser version is 131.0.6778.86 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00DC6AB3+25587]
+	(No symbol) [0x00D59C54]
+	(No symbol) [0x00C52113]
+	(No symbol) [0x00C88DEF]
+	(No symbol) [0x00C87EA9]
+	(No symbol) [0x00C837B1]
+	(No symbol) [0x00C7E689]
+	(No symbol) [0x00CC4BE5]
+	(No symbol) [0x00CC436A]
+	(No symbol) [0x00CBA936]
+	(No symbol) [0x00C8BA73]
+	(No symbol) [0x00C8C4CD]
+	GetHandleVerifier [0x010A4C63+3032483]
+	GetHandleVerifier [0x010F6B99+3368153]
+	GetHandleVerifier [0x00E58F62+624802]
+	GetHandleVerifier [0x00E607DC+655644]
+	(No symbol) [0x00D6260D]
+	(No symbol) [0x00D5F6D8]
+	(No symbol) [0x00D5F875]
+	(No symbol) [0x00D51CA6]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:32:35
+Error encountered: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=131.0.6778.86)
+Stacktrace:
+	GetHandleVerifier [0x00BF33E3+25059]
+	(No symbol) [0x00B7CDE4]
+	(No symbol) [0x00A5BEC3]
+	(No symbol) [0x00A3D93B]
+	(No symbol) [0x00AC800F]
+	(No symbol) [0x00ADAE49]
+	(No symbol) [0x00AC1C96]
+	(No symbol) [0x00A93FAC]
+	(No symbol) [0x00A94F3D]
+	GetHandleVerifier [0x00EE5543+3113795]
+	GetHandleVerifier [0x00EFA20A+3198986]
+	GetHandleVerifier [0x00EF29E2+3168226]
+	GetHandleVerifier [0x00C93250+680016]
+	(No symbol) [0x00B8572D]
+	(No symbol) [0x00B829D8]
+	(No symbol) [0x00B82B75]
+	(No symbol) [0x00B757D0]
+	BaseThreadInitThunk [0x76E77BA9+25]
+	RtlInitializeExceptionChain [0x77E5C0CB+107]
+	RtlClearBits [0x77E5C04F+191]
+
+Timestamp: 2024-11-24 22:34:56

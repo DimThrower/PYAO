@@ -135,13 +135,18 @@ def HAR():
                 browser.execute_script(
                     "arguments[0].value = arguments[1];", password_element, settings.HAR_PASSWORD)
 
+
+                #Click the Privacy Consent Button
+                click(browser, wait=60,e_type='css', element=html.selectors['har']['privacy_confirm_btn'],
+                      errmsg=f'({inspect.currentframe().f_lineno}) - Could not click confirm privacy settings')
+
                 # Click login btn
                 click(browser, wait=2, e_type='css', element=html.selectors['har']['login_btn'],
                     errmsg=f'({inspect.currentframe().f_lineno}) - Could not click login btn')
                 time.sleep(10)
 
                 # Click Matrix
-                click(browser, wait=2, e_type='css', element=html.selectors['har']['matrix'],
+                click(browser, wait=60, e_type='css', element=html.selectors['har']['matrix'],
                     errmsg=f'({inspect.currentframe().f_lineno}) - Could not click matrix')
                 time.sleep(2)
 

@@ -36116,3 +36116,347 @@ Stacktrace:
 	RtlUserThreadStart [0x00007FF9590FBF6C+44]
 
 Timestamp: 2025-05-06 11:01:13
+Error encountered: Message: session not created: probably user data directory is already in use, please specify a unique value for --user-data-dir argument, or don't use --user-data-dir
+Stacktrace:
+	GetHandleVerifier [0x00007FF6D6F7A145+76773]
+	GetHandleVerifier [0x00007FF6D6F7A1A0+76864]
+	(No symbol) [0x00007FF6D6D38F7A]
+	(No symbol) [0x00007FF6D6D75B82]
+	(No symbol) [0x00007FF6D6D71B5D]
+	(No symbol) [0x00007FF6D6DC5155]
+	(No symbol) [0x00007FF6D6DC4710]
+	(No symbol) [0x00007FF6D6DB7133]
+	(No symbol) [0x00007FF6D6D804D1]
+	(No symbol) [0x00007FF6D6D81263]
+	GetHandleVerifier [0x00007FF6D723A8ED+2962317]
+	GetHandleVerifier [0x00007FF6D7234EC2+2939234]
+	GetHandleVerifier [0x00007FF6D7252FF3+3062419]
+	GetHandleVerifier [0x00007FF6D6F94B9A+185914]
+	GetHandleVerifier [0x00007FF6D6F9C78F+217647]
+	GetHandleVerifier [0x00007FF6D6F82A44+111844]
+	GetHandleVerifier [0x00007FF6D6F82BF2+112274]
+	GetHandleVerifier [0x00007FF6D6F68A79+5401]
+	BaseThreadInitThunk [0x00007FFFDF14E8D7+23]
+	RtlUserThreadStart [0x00007FFFE0E7BF6C+44]
+
+Timestamp: 2025-05-06 19:47:43
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 139.0.7258.128 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF70E6CA145+76773]
+	GetHandleVerifier [0x00007FF70E6CA1A0+76864]
+	(No symbol) [0x00007FF70E488F7A]
+	(No symbol) [0x00007FF70E4CD28F]
+	(No symbol) [0x00007FF70E4CC2DB]
+	(No symbol) [0x00007FF70E4C6598]
+	(No symbol) [0x00007FF70E4C1B5D]
+	(No symbol) [0x00007FF70E515155]
+	(No symbol) [0x00007FF70E514710]
+	(No symbol) [0x00007FF70E507133]
+	(No symbol) [0x00007FF70E4D04D1]
+	(No symbol) [0x00007FF70E4D1263]
+	GetHandleVerifier [0x00007FF70E98A8ED+2962317]
+	GetHandleVerifier [0x00007FF70E984EC2+2939234]
+	GetHandleVerifier [0x00007FF70E9A2FF3+3062419]
+	GetHandleVerifier [0x00007FF70E6E4B9A+185914]
+	GetHandleVerifier [0x00007FF70E6EC78F+217647]
+	GetHandleVerifier [0x00007FF70E6D2A44+111844]
+	GetHandleVerifier [0x00007FF70E6D2BF2+112274]
+	GetHandleVerifier [0x00007FF70E6B8A79+5401]
+	BaseThreadInitThunk [0x00007FF8082CE8D7+23]
+	RtlUserThreadStart [0x00007FF8098FC34C+44]
+
+Timestamp: 2025-08-17 18:45:59
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 139.0.7258.128 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF70E6CA145+76773]
+	GetHandleVerifier [0x00007FF70E6CA1A0+76864]
+	(No symbol) [0x00007FF70E488F7A]
+	(No symbol) [0x00007FF70E4CD28F]
+	(No symbol) [0x00007FF70E4CC2DB]
+	(No symbol) [0x00007FF70E4C6598]
+	(No symbol) [0x00007FF70E4C1B5D]
+	(No symbol) [0x00007FF70E515155]
+	(No symbol) [0x00007FF70E514710]
+	(No symbol) [0x00007FF70E507133]
+	(No symbol) [0x00007FF70E4D04D1]
+	(No symbol) [0x00007FF70E4D1263]
+	GetHandleVerifier [0x00007FF70E98A8ED+2962317]
+	GetHandleVerifier [0x00007FF70E984EC2+2939234]
+	GetHandleVerifier [0x00007FF70E9A2FF3+3062419]
+	GetHandleVerifier [0x00007FF70E6E4B9A+185914]
+	GetHandleVerifier [0x00007FF70E6EC78F+217647]
+	GetHandleVerifier [0x00007FF70E6D2A44+111844]
+	GetHandleVerifier [0x00007FF70E6D2BF2+112274]
+	GetHandleVerifier [0x00007FF70E6B8A79+5401]
+	BaseThreadInitThunk [0x00007FF8082CE8D7+23]
+	RtlUserThreadStart [0x00007FF8098FC34C+44]
+
+Timestamp: 2025-08-17 18:47:12
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 139.0.7258.128 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF70E6CA145+76773]
+	GetHandleVerifier [0x00007FF70E6CA1A0+76864]
+	(No symbol) [0x00007FF70E488F7A]
+	(No symbol) [0x00007FF70E4CD28F]
+	(No symbol) [0x00007FF70E4CC2DB]
+	(No symbol) [0x00007FF70E4C6598]
+	(No symbol) [0x00007FF70E4C1B5D]
+	(No symbol) [0x00007FF70E515155]
+	(No symbol) [0x00007FF70E514710]
+	(No symbol) [0x00007FF70E507133]
+	(No symbol) [0x00007FF70E4D04D1]
+	(No symbol) [0x00007FF70E4D1263]
+	GetHandleVerifier [0x00007FF70E98A8ED+2962317]
+	GetHandleVerifier [0x00007FF70E984EC2+2939234]
+	GetHandleVerifier [0x00007FF70E9A2FF3+3062419]
+	GetHandleVerifier [0x00007FF70E6E4B9A+185914]
+	GetHandleVerifier [0x00007FF70E6EC78F+217647]
+	GetHandleVerifier [0x00007FF70E6D2A44+111844]
+	GetHandleVerifier [0x00007FF70E6D2BF2+112274]
+	GetHandleVerifier [0x00007FF70E6B8A79+5401]
+	BaseThreadInitThunk [0x00007FF8082CE8D7+23]
+	RtlUserThreadStart [0x00007FF8098FC34C+44]
+
+Timestamp: 2025-08-17 18:48:25
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 139.0.7258.128 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF70E6CA145+76773]
+	GetHandleVerifier [0x00007FF70E6CA1A0+76864]
+	(No symbol) [0x00007FF70E488F7A]
+	(No symbol) [0x00007FF70E4CD28F]
+	(No symbol) [0x00007FF70E4CC2DB]
+	(No symbol) [0x00007FF70E4C6598]
+	(No symbol) [0x00007FF70E4C1B5D]
+	(No symbol) [0x00007FF70E515155]
+	(No symbol) [0x00007FF70E514710]
+	(No symbol) [0x00007FF70E507133]
+	(No symbol) [0x00007FF70E4D04D1]
+	(No symbol) [0x00007FF70E4D1263]
+	GetHandleVerifier [0x00007FF70E98A8ED+2962317]
+	GetHandleVerifier [0x00007FF70E984EC2+2939234]
+	GetHandleVerifier [0x00007FF70E9A2FF3+3062419]
+	GetHandleVerifier [0x00007FF70E6E4B9A+185914]
+	GetHandleVerifier [0x00007FF70E6EC78F+217647]
+	GetHandleVerifier [0x00007FF70E6D2A44+111844]
+	GetHandleVerifier [0x00007FF70E6D2BF2+112274]
+	GetHandleVerifier [0x00007FF70E6B8A79+5401]
+	BaseThreadInitThunk [0x00007FF8082CE8D7+23]
+	RtlUserThreadStart [0x00007FF8098FC34C+44]
+
+Timestamp: 2025-08-17 18:49:38
+Error encountered: Message: session not created: This version of ChromeDriver only supports Chrome version 136
+Current browser version is 139.0.7258.128 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF70E6CA145+76773]
+	GetHandleVerifier [0x00007FF70E6CA1A0+76864]
+	(No symbol) [0x00007FF70E488F7A]
+	(No symbol) [0x00007FF70E4CD28F]
+	(No symbol) [0x00007FF70E4CC2DB]
+	(No symbol) [0x00007FF70E4C6598]
+	(No symbol) [0x00007FF70E4C1B5D]
+	(No symbol) [0x00007FF70E515155]
+	(No symbol) [0x00007FF70E514710]
+	(No symbol) [0x00007FF70E507133]
+	(No symbol) [0x00007FF70E4D04D1]
+	(No symbol) [0x00007FF70E4D1263]
+	GetHandleVerifier [0x00007FF70E98A8ED+2962317]
+	GetHandleVerifier [0x00007FF70E984EC2+2939234]
+	GetHandleVerifier [0x00007FF70E9A2FF3+3062419]
+	GetHandleVerifier [0x00007FF70E6E4B9A+185914]
+	GetHandleVerifier [0x00007FF70E6EC78F+217647]
+	GetHandleVerifier [0x00007FF70E6D2A44+111844]
+	GetHandleVerifier [0x00007FF70E6D2BF2+112274]
+	GetHandleVerifier [0x00007FF70E6B8A79+5401]
+	BaseThreadInitThunk [0x00007FF8082CE8D7+23]
+	RtlUserThreadStart [0x00007FF8098FC34C+44]
+
+Timestamp: 2025-08-17 18:50:51
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3c0ea]
+	(No symbol) [0x0x7ff71ec28355]
+	(No symbol) [0x0x7ff71ec4cefa]
+	(No symbol) [0x0x7ff71ecc2845]
+	(No symbol) [0x0x7ff71ece2d02]
+	(No symbol) [0x0x7ff71ecbaf13]
+	(No symbol) [0x0x7ff71ec84151]
+	(No symbol) [0x0x7ff71ec84ee3]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	GetHandleVerifier [0x0x7ff71eeaf914+115956]
+	GetHandleVerifier [0x0x7ff71eeafac9+116393]
+	GetHandleVerifier [0x0x7ff71ee95ef8+10968]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 18:52:02
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3c0ea]
+	(No symbol) [0x0x7ff71ec2684b]
+	(No symbol) [0x0x7ff71ec27d2f]
+	(No symbol) [0x0x7ff71ec3cb3f]
+	(No symbol) [0x0x7ff71ec1402d]
+	(No symbol) [0x0x7ff71ecccf58]
+	(No symbol) [0x0x7ff71ecbb100]
+	(No symbol) [0x0x7ff71ec84151]
+	(No symbol) [0x0x7ff71ec84ee3]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	GetHandleVerifier [0x0x7ff71eeaf914+115956]
+	GetHandleVerifier [0x0x7ff71eeafac9+116393]
+	GetHandleVerifier [0x0x7ff71ee95ef8+10968]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 18:53:42
+Error encountered: Message: invalid session id
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3bf1c]
+	(No symbol) [0x0x7ff71ec8327f]
+	(No symbol) [0x0x7ff71ecbb002]
+	(No symbol) [0x0x7ff71ecb5b23]
+	(No symbol) [0x0x7ff71ecb4be9]
+	(No symbol) [0x0x7ff71ec06fd5]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	(No symbol) [0x0x7ff71ec05fd1]
+	GetHandleVerifier [0x0x7ff71f27e428+4108296]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 18:55:59
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3c0ea]
+	(No symbol) [0x0x7ff71ec2684b]
+	(No symbol) [0x0x7ff71ec27d2f]
+	(No symbol) [0x0x7ff71ec3cb3f]
+	(No symbol) [0x0x7ff71ec1402d]
+	(No symbol) [0x0x7ff71ecccf58]
+	(No symbol) [0x0x7ff71ecbb100]
+	(No symbol) [0x0x7ff71ec84151]
+	(No symbol) [0x0x7ff71ec84ee3]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	GetHandleVerifier [0x0x7ff71eeaf914+115956]
+	GetHandleVerifier [0x0x7ff71eeafac9+116393]
+	GetHandleVerifier [0x0x7ff71ee95ef8+10968]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 18:58:30
+Error encountered: Message: invalid session id
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3bf1c]
+	(No symbol) [0x0x7ff71ec8327f]
+	(No symbol) [0x0x7ff71ecbb002]
+	(No symbol) [0x0x7ff71ecb5b23]
+	(No symbol) [0x0x7ff71ecb4be9]
+	(No symbol) [0x0x7ff71ec06fd5]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	(No symbol) [0x0x7ff71ec05fd1]
+	GetHandleVerifier [0x0x7ff71f27e428+4108296]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 19:01:00
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=139.0.7258.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff71eea6b25+79621]
+	GetHandleVerifier [0x0x7ff71eea6b80+79712]
+	(No symbol) [0x0x7ff71ec3c0ea]
+	(No symbol) [0x0x7ff71ec2684b]
+	(No symbol) [0x0x7ff71ec27d2f]
+	(No symbol) [0x0x7ff71ec3cb3f]
+	(No symbol) [0x0x7ff71ec1402d]
+	(No symbol) [0x0x7ff71ecccf58]
+	(No symbol) [0x0x7ff71ecbb100]
+	(No symbol) [0x0x7ff71ec84151]
+	(No symbol) [0x0x7ff71ec84ee3]
+	GetHandleVerifier [0x0x7ff71f16683d+2962461]
+	GetHandleVerifier [0x0x7ff71f160b5d+2938685]
+	GetHandleVerifier [0x0x7ff71f17f71d+3064573]
+	GetHandleVerifier [0x0x7ff71eec0c6e+186446]
+	GetHandleVerifier [0x0x7ff71eec8a3f+218655]
+	GetHandleVerifier [0x0x7ff71eeaf914+115956]
+	GetHandleVerifier [0x0x7ff71eeafac9+116393]
+	GetHandleVerifier [0x0x7ff71ee95ef8+10968]
+	BaseThreadInitThunk [0x0x7ff8082ce8d7+23]
+	RtlUserThreadStart [0x0x7ff8098fc34c+44]
+
+Timestamp: 2025-08-17 19:03:33
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:04:15
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:05:47
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:07:19
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:08:50
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:10:22
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:11:53
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:13:25
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:14:56
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:16:28
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:17:59
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:19:30
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:21:02
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:22:33
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:24:04
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:25:35
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:27:09
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:28:41
+Error encountered: 'NoneType' object is not subscriptable
+Timestamp: 2025-08-17 19:30:12

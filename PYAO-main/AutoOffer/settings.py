@@ -60,4 +60,6 @@ long_wait = 4.5 # seconds
 avg_wait = (short_wait+long_wait)/2
 max_offers = 10 # (offer_end_hour-offer_start_hour)*60/avg_wait*0.70
 
+#*out of state,!*new,!*renovated,*no FHA,*repair* ne,*fire dama,*inherit,*value add,*probate,*estate,*tear down,*bring all,*must sale,*outdated,*eeds work,*distress,*tlc,*handy man,*ash onl,*invest,*fixer-upper,*as-is,*as is,*motivat,*all offer,*needs update,*lank canvas,!*auction,!*hud
+
 

@@ -1,37 +1,35 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-import time
-import os
-import pyautogui
-import shutil
-import schedule
-import ctypes
-from selenium.webdriver.firefox.options import Options
-from AutoOffer import settings
-from HTML import TextFields, CheckBoxes, Buttons
-from AutoOffer.html_manipulation.HTML import PropertyProfile
-from AutoOffer.misc import *
-from AutoOffer import settings
-from AutoOffer.db import db_funct
-from AutoOffer.html_manipulation.HTML import PropertyProfile
-from AutoOffer.Offer_Generator.misc import generate_closing_date
-from AutoOffer.Offer_Generator import write_offer_v2
-import HTML_TREC
 
-# Create Db
-# db_funct.create_db()
+import logging
+import os
+from AutoOffer.Offer_Generator import pdf_statics, pdf_utils
+# from shared import shared_statics, shared_config
+from AutoOffer.html_manipulation.HTML import PropertyProfile
+from AutoOffer.db import db_funct
+from AutoOffer import settings
+from AutoOffer.Offer_Generator.misc import generate_closing_date
+import schedule
+import time
+
+
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s'
+)
 
 pp = PropertyProfile()
-pdf_text_fields = HTML_TREC.TextFields()
-pdf_box_fields = HTML_TREC.CheckBoxes()
+
+pdf_text_fields = pdf_statics.TextFields()
+pdf_box_fields = pdf_statics.CheckBoxes()
+pdf_lot_text_fields = pdf_statics.LotTextFields()
+pdf_lot_box_fields = pdf_statics.LotCheckBoxes()
+
 na = "N/A"
-checked = "Yes" 
+checked = "/On"
 
-time.sleep(4)
 
+#def create_offer_1_to_4(prop_dict, input_file):
 def create_offers():
     # Check to see if db needs to be created
     db_funct.create_db()
@@ -50,125 +48,142 @@ def create_offers():
             # Only creating offers for properties that do not have them
             if prop_dict[pp.pdf_offer_path] is None:
 
-                
-                # write_offer.create_offer(doc_name=f"Offer for {prop_dict[pp.steet_address]}",
-                #         address=prop_dict[pp.steet_address],
-                #         seller_name=prop_dict[pp.owner_name],
-                #         buyer_name="Cornerstone Home Solutions, LLC",
-                #         price=prop_dict[pp.offer_price],
-                #         lot=prop_dict[pp.lot],
-                #         block=prop_dict[pp.block],
-                #         closing_date=generate_closing_date(21),
-                #         title_company=prop_dict[pp.title_company_name],
-                #         legal_description=prop_dict[pp.legal_description],
-                #         title_company_address=prop_dict[pp.title_company_address],
-                #         earnest_money=prop_dict[pp.em],
-                #         option_money=prop_dict[pp.om],
-                #         city=prop_dict[pp.city],
-                #         zip_code=prop_dict[pp.zip_Code],
-                #         subdivision=prop_dict[pp.subdivision],
-                #         county=prop_dict[pp.county],
-                #         escrow_agent=prop_dict[pp.escrow_agent],
-                #         option_days=prop_dict[pp.option_days],
-                #         trec_path=settings.blank_TREC_file_path,
-                #         mls_id=prop_dict[pp.mls_id],                                              
-                # )
+    #logging.info(f"Creating 1-4 Offer for {prop_dict["Page 1"][pdf_statics.address]}")
 
-                
-                contract_concerning = f'{prop_dict[pp.steet_address]}, {prop_dict[pp.city]}, TX {prop_dict[pp.zip_Code]}'
+    # Realist tax has no ifo on hOA so always check no
+    # hoa_no_check_box = checked
 
-                
-                if prop_dict[pp.lead_based_paint]:
-                    lbp_check_box = checked
-                else:
-                    lbp_check_box = ""
+    # contract_concerning = f"{prop_dict[shared_statics.street_address]}, {prop_dict[shared_statics.city]}, {prop_dict[shared_statics.zipcode]} TX"
 
-                if 'Yes' in prop_dict[pp.hoa]:
-                    hoa_yes_check_box = checked
-                    hoa_no_check_box = ""
-                else:
-                    hoa_yes_check_box = ""
-                    hoa_no_check_box = checked
+    # Determing if LBP needs to be checked
+    # if int(prop_dict[shared_statics.year_built]) <= 1979:
+    #     lbp_check_box = checked
+    # else:
+    #     lbp_check_box = ""
+
+    # Always check no for HOA since realist doesn't say
+    # hoa_no_check_box = checked
+
+                property_full_addy = f'{prop_dict[pp.steet_address]}, {prop_dict[pp.city]}, TX {prop_dict[pp.zip_Code]}'
 
                 pdf_data_dict = {
-                        #1st Page
-                        pdf_text_fields.seller: prop_dict[pp.owner_name],
-                        pdf_text_fields.buyer: "Cornerstone Home Solutions, LLC",
-                        pdf_text_fields.lot: str(prop_dict[pp.lot]),
-                        pdf_text_fields.block: str(prop_dict[pp.block]),
-                        pdf_text_fields.subdivision: prop_dict[pp.subdivision],
-                        pdf_text_fields.city: prop_dict[pp.city],
-                        pdf_text_fields.county: prop_dict[pp.county],
-                        pdf_text_fields.address: f"{prop_dict[pp.steet_address]}, {prop_dict[pp.zip_Code]}",
-                        pdf_text_fields.exclusions: na,
-                        pdf_text_fields.cash_portion: str(prop_dict[pp.offer_price]),
-                        pdf_text_fields.finance_portion: na,
-                        pdf_text_fields.total_price: str(prop_dict[pp.offer_price]),
+                    #1st Page
+                    pdf_text_fields.seller: prop_dict[pp.owner_name],
+                    pdf_text_fields.buyer: "Cornerstone Home Solutions, LLC",
+                    pdf_text_fields.lot: str(prop_dict[pp.lot]),
+                    pdf_text_fields.block: str(prop_dict[pp.block]),
+                    pdf_text_fields.subdivision: prop_dict[pp.subdivision],
+                    pdf_text_fields.city: prop_dict[pp.city],
+                    pdf_text_fields.county: prop_dict[pp.county],
+                    pdf_text_fields.address: f"{prop_dict[pp.steet_address]}, {prop_dict[pp.zip_Code]}",
+                    pdf_text_fields.exclusions: na,
+                    pdf_text_fields.cash_portion: str(pdf_utils.remove_non_numeric(prop_dict[pp.offer_price])),
+                    pdf_text_fields.finance_portion: 0,
+                    pdf_box_fields.third_party_finance: False, #True if int(prop_dict["Page 1"][pdf_statics.finance_portion])>0 else False,
+                    pdf_text_fields.total_price: str(pdf_utils.remove_non_numeric(prop_dict[pp.offer_price])),
 
-                        #2nd Page
-                        pdf_text_fields.prop_add1: contract_concerning,
-                        pdf_text_fields.escrow_agent: prop_dict[pp.escrow_agent],
-                        pdf_text_fields.title_address: prop_dict[pp.title_company_address],
-                        pdf_text_fields.em: prop_dict[pp.em],
-                        pdf_text_fields.add_em_days: na,
-                        pdf_text_fields.om: prop_dict[pp.om],
-                        pdf_text_fields.option_days: prop_dict[pp.option_days],
-                        pdf_box_fields.buyer_pay_title_policy: checked,
-                        pdf_text_fields.title_company_name: prop_dict[pp.title_company_name],
-                        pdf_box_fields.no_amend_or_del: checked,
+                    #2nd Page
+                    pdf_text_fields.prop_add1: property_full_addy,#prop_dict["Page 2"][pdf_statics.prop_add1],
+                    pdf_text_fields.escrow_agent: prop_dict[pp.escrow_agent],
+                    pdf_text_fields.title_address: prop_dict[pp.title_company_address],
+                    pdf_text_fields.em: prop_dict[pp.em],
+                    pdf_text_fields.add_em: 0,
+                    pdf_text_fields.add_em_days: 0,
+                    pdf_text_fields.om: prop_dict[pp.om],
+                    pdf_text_fields.option_days: prop_dict[pp.option_days],
+                    pdf_box_fields.seller_pay_title_policy: "", #not prop_dict["Page 2"][pdf_statics.buyer_pay_title_policy],
+                    pdf_box_fields.buyer_pay_title_policy: True, #prop_dict["Page 2"][pdf_statics.buyer_pay_title_policy],
+                    pdf_text_fields.title_company_name: prop_dict[pp.title_company_name],
+                    pdf_box_fields.no_amend_or_del: True, #prop_dict["Page 2"][pdf_statics.no_amend_or_del],
 
-                        #3rd Page
-                        pdf_text_fields.prop_add2: contract_concerning,
-                        pdf_box_fields.buyer_pay_survey: checked,
-                        pdf_text_fields.survey_days: "5",
-                        pdf_text_fields.objections: "Single-Family",
-                        pdf_text_fields.objection_days: "3",
-                        pdf_box_fields.yes_hoa: hoa_yes_check_box,
-                        pdf_box_fields.no_hoa: hoa_no_check_box,
+                    #3rd Page
+                    pdf_text_fields.prop_add2: property_full_addy,#prop_dict["Page 3"][pdf_statics.prop_add2],
+                    pdf_box_fields.buyer_pay_survey: True, #prop_dict["Page 3"][pdf_statics.buyer_pay_survey],
+                    pdf_text_fields.survey_days: "10",#prop_dict["Page 3"][pdf_statics.survey_days],
+                    pdf_text_fields.objections: "Single-Family", #prop_dict["Page 3"][pdf_statics.objections],
+                    pdf_text_fields.objection_days: "3",#prop_dict["Page 3"][pdf_statics.objection_days],
+                    pdf_box_fields.yes_hoa: True if prop_dict[pp.hoa] == "Yes" else False,
+                    pdf_box_fields.no_hoa: True if prop_dict[pp.hoa] != "Yes" else False,
 
-                        #4th Page
-                        pdf_text_fields.prop_add3: contract_concerning,
-                        pdf_text_fields.req_notices: "",
-                        pdf_box_fields.seller_disclosure: checked,
-                        pdf_text_fields.sd_days: "5",
+                    #4th Page
+                    pdf_text_fields.prop_add3: property_full_addy,#prop_dict["Page 4"][pdf_statics.prop_add3],
+                    pdf_text_fields.req_notices: "Buyer is a licensed Sales Agent",
+                    pdf_box_fields.seller_disclosure: True,
+                    pdf_text_fields.sd_days: "5",
 
-                        #5th Page
-                        pdf_text_fields.prop_add4: contract_concerning,
-                        pdf_box_fields.as_is: checked,
-                        pdf_text_fields.service_contract: na,
-                        pdf_text_fields.broker_discolsure: na,
-                        pdf_text_fields.closing_date: str(generate_closing_date(21)),
+                    #5th Page
+                    pdf_text_fields.prop_add4: property_full_addy,#prop_dict["Page 5"][pdf_statics.prop_add4],
+                    pdf_box_fields.as_is: True,
+                    pdf_text_fields.service_contract: na,
+                    pdf_text_fields.broker_discolsure: na,
+                    pdf_text_fields.closing_date: str(pdf_utils.generate_closing_date(21)),
 
-                        #6th Page
-                        pdf_text_fields.prop_add5: contract_concerning,
-                        pdf_text_fields.service_contract: na,
-                        pdf_box_fields.buyer_poss: checked,
-                        pdf_text_fields.special_prov1: prop_dict[pp.legal_description],
-                        pdf_text_fields.special_prov2: 'Buyers agrees to pay all standard closing cost, excluding due taxes, liens, and brokerage fees',
-                        pdf_text_fields.special_prov3: 'Option period to begin day after contract lockbox placed on property and code given to buyer',
-                        pdf_text_fields.other_exp: na,   
+                    #6th Page
+                    pdf_text_fields.prop_add5: property_full_addy,#prop_dict["Page 6"][pdf_statics.prop_add5],
+                    pdf_box_fields.buyer_poss: True,
+                    pdf_text_fields.special_prov1: "",#prop_dict["Page 6"][pdf_statics.special_prov1],
+                    pdf_text_fields.special_prov2: "Buyers agrees to pay all standard closing cost, excluding due taxes, liens, and brokerage fees",
+                    pdf_text_fields.special_prov3: 'Option period to begin day after contract lockbox placed on property and code given to buyer',
+                    pdf_box_fields.flat_commission: "0",#True if int(prop_dict["Page 6"][pdf_statics.flat_commission_amount])>0 else False,
+                    pdf_text_fields.flat_commission_amount:"0",# prop_dict["Page 6"][pdf_statics.flat_commission_amount],
+                    pdf_box_fields.percent_commission:"0",#True if int(prop_dict["Page 6"][pdf_statics.percent_commission_amount])>0 else False,
+                    pdf_text_fields.percent_commission_amount:"0",# prop_dict["Page 6"][pdf_statics.percent_commission_amount],
+                    pdf_text_fields.seller_max_contribution:"0",# prop_dict["Page 6"][pdf_statics.seller_max_contribution],
 
-                        #7th Page
-                        pdf_text_fields.prop_add6: contract_concerning,
 
-                        #8th Page
-                        pdf_text_fields.prop_add7: contract_concerning,
-                        pdf_box_fields.lbp_addendum: lbp_check_box,
-                        pdf_box_fields.hoa_addendum: hoa_yes_check_box,
-                        pdf_text_fields.buy_email: "charles@cornerstonehomesolutions.com",
+                    #7th Page
+                    pdf_text_fields.prop_add6: property_full_addy,#prop_dict["Page 7"][pdf_statics.prop_add6],
 
-                        #9th Page
-                        pdf_text_fields.prop_add8: contract_concerning,
+                    #8th Page
+                    pdf_text_fields.prop_add7: property_full_addy,#prop_dict["Page 8"][pdf_statics.prop_add7],
+                    pdf_box_fields.lbp_addendum: True if int(prop_dict[pp.year_built]) <= 1978 else False,
+                    pdf_box_fields.hoa_addendum: True if prop_dict[pp.hoa] == "Yes" else False,
+                    pdf_box_fields.tpf_addendum: False, #True if int(prop_dict["Page 1"][pdf_statics.finance_portion])>0 else False,
+                    pdf_text_fields.buy_email: "charles@cornerstonehomesolutions.com",
 
-                        #10th Page
-                        pdf_text_fields.prop_add9: contract_concerning,
+                    #9th Page
+                    pdf_text_fields.prop_add8: property_full_addy,#prop_dict["Page 9"][pdf_statics.prop_add8],
 
-                        #11th Page
-                        pdf_text_fields.prop_add10: contract_concerning,
-                        }
+                    #10th Page
+                    pdf_text_fields .prop_add9: property_full_addy,#prop_dict["Page 10"][pdf_statics.prop_add9],
+
+                    #11th Page
+                    pdf_text_fields.prop_add10: property_full_addy,#prop_dict["Page 11"][pdf_statics.prop_add10],
+
+                    # Sellers Disclosure
+                    # pdf_text_fields.sd_prop_1: property_full_addy,
+                    # pdf_text_fields.sd_prop_2: property_full_addy,
+                    # pdf_text_fields.sd_prop_3: property_full_addy,
+                    # pdf_text_fields.sd_prop_4: property_full_addy,
+
+                    # # LBP
+                    # pdf_text_fields.lbp_prop_1: property_full_addy,
+
+                    # # EM Deposit
+                    # pdf_text_fields.rd_prop_1: property_full_addy,
+                    # pdf_text_fields.rd_buyer: prop_dict["Page 1"][pdf_statics.buyer],
+                    # pdf_text_fields.rd_buyer_phone: prop_dict["Backside"][pdf_statics.rd_buyer_phone],
+                    # pdf_text_fields.rd_buyer_address: prop_dict["Backside"][pdf_statics.rd_buyer_address],
+                    # pdf_text_fields.rd_earnest_money: f"${prop_dict["Page 2"][pdf_statics.em]}",
+
+                    # #Finance Addendum
+                    # pdf_text_fields.tpa_prop_1: property_full_addy,
+                    # pdf_text_fields.tpa_lender_name: "Searchers Capital",
+                    # pdf_text_fields.tpa_principal: str(prop_dict["Page 1"][pdf_statics.finance_portion]),
+                    # pdf_text_fields.tpa_loan_yrs: "0.5",
+                    # pdf_text_fields.tpa_loan_interst: prop_dict["Finance"][pdf_statics.tpa_loan_interst],
+                    # pdf_text_fields.tpa_first_year_interest: "3",
+                    # pdf_text_fields.tpa_origination_charge: "2",
+                    # pdf_box_fields.tpa_waive_rights_yes: prop_dict["Finance"][pdf_statics.tpa_waive_rights_yes],
+                    # pdf_box_fields.tpa_waive_rights_no: not prop_dict["Finance"][pdf_statics.tpa_waive_rights_yes],
+                    # pdf_box_fields.tpa_other_fin: True if int(prop_dict["Page 1"][pdf_statics.finance_portion])>0 else False,
+                    # pdf_box_fields.tpa_lender_approval_yes: True if int(prop_dict["Page 1"][pdf_statics.finance_portion])>0 else False,
+                    # pdf_text_fields.tpa_lender_approval_days: 10,
+                    # pdf_text_fields.tpa_prop_2: property_full_addy,
+                    }
                 
+                #offer_folder = shared_config.saved_contract_path
                 offer_folder = os.path.join(settings.filled_TREC_file_path_HOU, f"{str(prop_dict[pp.mls_id])}")
-                
                 try:
                     os.mkdir(offer_folder)
                 except FileExistsError:
@@ -176,11 +191,13 @@ def create_offers():
                     os.rmdir(offer_folder)
                     os.mkdir(offer_folder)
 
+                print(f'HOA value for {prop_dict[pp.steet_address]} is: {prop_dict[pp.hoa]}')
+
                 output_pdf_path = os.path.join(offer_folder, f"Offer for {prop_dict[pp.steet_address].replace('/','-')}, {prop_dict[pp.zip_Code]}.pdf")
 
-                save_successsful = write_offer_v2.fill_pdf(input_pdf_path=settings.blank_TREC_file_path,
-                                                 output_pdf_path=output_pdf_path,
-                                                 pdf_data_dict=pdf_data_dict)
+                save_successsful = pdf_utils.fill_pdf(input_pdf_path=settings.blank_TREC_file_path,
+                                                    output_pdf_path=output_pdf_path,
+                                                    pdf_data_dict=pdf_data_dict)
                 if save_successsful:
                     db_funct.multi_db_update(mls_id=prop_dict[pp.mls_id],
                                             data_dict={
@@ -207,18 +224,13 @@ while True:
     # Check to see if db needs to be created
     schedule.run_pending()
     time.sleep(1)
+                # # output_pdf_path = os.path.join(offer_folder, f"Offer for {prop_dict[shared_statics.street_address].replace('/','-')}, {prop_dict[shared_statics.zipcode]}.pdf")
+                # output_pdf_path = os.path.join(offer_folder, f"Offer for {prop_dict["Page 1"][pdf_statics.address].replace('/','-')}.pdf")
 
-# import os
 
-# folder_path = '/path/to/folder'
-
-# # List files in the folder
-# files = os.listdir(folder_path)
-
-# # Check if there is only one file in the folder
-# if len(files) == 1:
-#     file_path = os.path.join(folder_path, files[0])
-#     print("File path:", file_path)
-# else:
-#     print("There is not exactly one file in the folder.")
-
+                # save_successsful = pdf_utils.fill_pdf(input_pdf_path=input_file,
+                #                                     output_pdf_path=output_pdf_path,
+                #                                     pdf_data_dict=pdf_data_dict)
+                # if save_successsful:    
+                #     logging.info(f"File Saved: {prop_dict["Page 1"][pdf_statics.address]}")
+        

@@ -146,7 +146,7 @@ def HAR():
                 time.sleep(10)
 
                 # Click Matrix
-                click(browser, wait=60, e_type='css', element=html.selectors['har']['matrix'],
+                click(browser, wait=60, e_type='xpath', element=html.selectors['har']['matrix'],
                     errmsg=f'({inspect.currentframe().f_lineno}) - Could not click matrix')
                 time.sleep(2)
 

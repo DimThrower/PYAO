@@ -36460,3 +36460,140 @@ Error encountered: 'NoneType' object is not subscriptable
 Timestamp: 2025-08-17 19:28:41
 Error encountered: 'NoneType' object is not subscriptable
 Timestamp: 2025-08-17 19:30:12
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e4cd6b25+79621]
+	GetHandleVerifier [0x0x7ff6e4cd6b80+79712]
+	(No symbol) [0x0x7ff6e4a6c0ea]
+	(No symbol) [0x0x7ff6e4a5684b]
+	(No symbol) [0x0x7ff6e4a57d2f]
+	(No symbol) [0x0x7ff6e4a6cb3f]
+	(No symbol) [0x0x7ff6e4a4402d]
+	(No symbol) [0x0x7ff6e4afcf58]
+	(No symbol) [0x0x7ff6e4aeb100]
+	(No symbol) [0x0x7ff6e4ab4151]
+	(No symbol) [0x0x7ff6e4ab4ee3]
+	GetHandleVerifier [0x0x7ff6e4f9683d+2962461]
+	GetHandleVerifier [0x0x7ff6e4f90b5d+2938685]
+	GetHandleVerifier [0x0x7ff6e4faf71d+3064573]
+	GetHandleVerifier [0x0x7ff6e4cf0c6e+186446]
+	GetHandleVerifier [0x0x7ff6e4cf8a3f+218655]
+	GetHandleVerifier [0x0x7ff6e4cdf914+115956]
+	GetHandleVerifier [0x0x7ff6e4cdfac9+116393]
+	GetHandleVerifier [0x0x7ff6e4cc5ef8+10968]
+	BaseThreadInitThunk [0x0x7fff3b7de8d7+23]
+	RtlUserThreadStart [0x0x7fff3d5c8d9c+44]
+
+Timestamp: 2025-09-14 13:16:37
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e4cd6b25+79621]
+	GetHandleVerifier [0x0x7ff6e4cd6b80+79712]
+	(No symbol) [0x0x7ff6e4a6c0ea]
+	(No symbol) [0x0x7ff6e4a5684b]
+	(No symbol) [0x0x7ff6e4a57d2f]
+	(No symbol) [0x0x7ff6e4a6cb3f]
+	(No symbol) [0x0x7ff6e4a4402d]
+	(No symbol) [0x0x7ff6e4afcf58]
+	(No symbol) [0x0x7ff6e4aeb100]
+	(No symbol) [0x0x7ff6e4ab4151]
+	(No symbol) [0x0x7ff6e4ab4ee3]
+	GetHandleVerifier [0x0x7ff6e4f9683d+2962461]
+	GetHandleVerifier [0x0x7ff6e4f90b5d+2938685]
+	GetHandleVerifier [0x0x7ff6e4faf71d+3064573]
+	GetHandleVerifier [0x0x7ff6e4cf0c6e+186446]
+	GetHandleVerifier [0x0x7ff6e4cf8a3f+218655]
+	GetHandleVerifier [0x0x7ff6e4cdf914+115956]
+	GetHandleVerifier [0x0x7ff6e4cdfac9+116393]
+	GetHandleVerifier [0x0x7ff6e4cc5ef8+10968]
+	BaseThreadInitThunk [0x0x7fff3b7de8d7+23]
+	RtlUserThreadStart [0x0x7fff3d5c8d9c+44]
+
+Timestamp: 2025-09-14 13:19:09
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e4cd6b25+79621]
+	GetHandleVerifier [0x0x7ff6e4cd6b80+79712]
+	(No symbol) [0x0x7ff6e4a6c0ea]
+	(No symbol) [0x0x7ff6e4a5684b]
+	(No symbol) [0x0x7ff6e4a57d2f]
+	(No symbol) [0x0x7ff6e4a6cb3f]
+	(No symbol) [0x0x7ff6e4a4402d]
+	(No symbol) [0x0x7ff6e4afcf58]
+	(No symbol) [0x0x7ff6e4aeb100]
+	(No symbol) [0x0x7ff6e4ab4151]
+	(No symbol) [0x0x7ff6e4ab4ee3]
+	GetHandleVerifier [0x0x7ff6e4f9683d+2962461]
+	GetHandleVerifier [0x0x7ff6e4f90b5d+2938685]
+	GetHandleVerifier [0x0x7ff6e4faf71d+3064573]
+	GetHandleVerifier [0x0x7ff6e4cf0c6e+186446]
+	GetHandleVerifier [0x0x7ff6e4cf8a3f+218655]
+	GetHandleVerifier [0x0x7ff6e4cdf914+115956]
+	GetHandleVerifier [0x0x7ff6e4cdfac9+116393]
+	GetHandleVerifier [0x0x7ff6e4cc5ef8+10968]
+	BaseThreadInitThunk [0x0x7fff3b7de8d7+23]
+	RtlUserThreadStart [0x0x7fff3d5c8d9c+44]
+
+Timestamp: 2025-09-14 13:21:40
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e4cd6b25+79621]
+	GetHandleVerifier [0x0x7ff6e4cd6b80+79712]
+	(No symbol) [0x0x7ff6e4a6c0ea]
+	(No symbol) [0x0x7ff6e4a5684b]
+	(No symbol) [0x0x7ff6e4a57d2f]
+	(No symbol) [0x0x7ff6e4a6cb3f]
+	(No symbol) [0x0x7ff6e4a4402d]
+	(No symbol) [0x0x7ff6e4afcf58]
+	(No symbol) [0x0x7ff6e4aeb100]
+	(No symbol) [0x0x7ff6e4ab4151]
+	(No symbol) [0x0x7ff6e4ab4ee3]
+	GetHandleVerifier [0x0x7ff6e4f9683d+2962461]
+	GetHandleVerifier [0x0x7ff6e4f90b5d+2938685]
+	GetHandleVerifier [0x0x7ff6e4faf71d+3064573]
+	GetHandleVerifier [0x0x7ff6e4cf0c6e+186446]
+	GetHandleVerifier [0x0x7ff6e4cf8a3f+218655]
+	GetHandleVerifier [0x0x7ff6e4cdf914+115956]
+	GetHandleVerifier [0x0x7ff6e4cdfac9+116393]
+	GetHandleVerifier [0x0x7ff6e4cc5ef8+10968]
+	BaseThreadInitThunk [0x0x7fff3b7de8d7+23]
+	RtlUserThreadStart [0x0x7fff3d5c8d9c+44]
+
+Timestamp: 2025-09-14 13:23:27
+Error encountered: 'NoneType' object has no attribute 'is_displayed'
+Timestamp: 2025-09-14 13:25:48
+Error encountered: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=140.0.7339.128)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6e4cd6b25+79621]
+	GetHandleVerifier [0x0x7ff6e4cd6b80+79712]
+	(No symbol) [0x0x7ff6e4a6c0ea]
+	(No symbol) [0x0x7ff6e4a5684b]
+	(No symbol) [0x0x7ff6e4a57d2f]
+	(No symbol) [0x0x7ff6e4a6cb3f]
+	(No symbol) [0x0x7ff6e4a4402d]
+	(No symbol) [0x0x7ff6e4afcf58]
+	(No symbol) [0x0x7ff6e4aeb100]
+	(No symbol) [0x0x7ff6e4ab4151]
+	(No symbol) [0x0x7ff6e4ab4ee3]
+	GetHandleVerifier [0x0x7ff6e4f9683d+2962461]
+	GetHandleVerifier [0x0x7ff6e4f90b5d+2938685]
+	GetHandleVerifier [0x0x7ff6e4faf71d+3064573]
+	GetHandleVerifier [0x0x7ff6e4cf0c6e+186446]
+	GetHandleVerifier [0x0x7ff6e4cf8a3f+218655]
+	GetHandleVerifier [0x0x7ff6e4cdf914+115956]
+	GetHandleVerifier [0x0x7ff6e4cdfac9+116393]
+	GetHandleVerifier [0x0x7ff6e4cc5ef8+10968]
+	BaseThreadInitThunk [0x0x7fff3b7de8d7+23]
+	RtlUserThreadStart [0x0x7fff3d5c8d9c+44]
+
+Timestamp: 2025-09-14 13:27:40
